@@ -1,0 +1,21 @@
+
+spring:   
+  security:
+    oauth2:
+      client:
+        registration:
+          strava:
+            provider: strava-provider
+            client-id: 58845
+            client-secret: c82e3a33a6370664bc5cc688082e041561226a76
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/
+            scope:
+              - activity:read,profile:read_all
+        provider:
+          strava-provider:
+            tokenUri: https://www.strava.com/api/v3/oauth/token
+            authorizationUri: https://www.strava.com/api/v3/oauth/authorize?response_type=code
+            user-info-uri: https://www.strava.com/api/v3/athlete
+            user-name-attribute: id

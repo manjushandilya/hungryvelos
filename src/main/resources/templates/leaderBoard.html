@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+Teams Rankings
+<table border="1">
+    <tr>
+        <th>Team name</th>
+        <th>Kilometers</th>
+    </tr>
+    <tr th:each="team: ${leaderBoard.teamTotals}">
+        <td th:text="${team.key}"/>
+        <td th:text="${team.value}"/>
+    </tr>
+</table>
+
+Bettappa
+<table border="1">
+    <tr>
+        <th>Athlete name</th>
+        <th>Elevation gain in meters</th>
+    </tr>
+    <tr th:each="team: ${leaderBoard.bettappa}">
+        <td th:text="${team.key}"/>
+        <td th:text="${team.value}"/>
+    </tr>
+</table>
+
+Bettamma
+<table border="1">
+    <tr>
+        <th>Athlete name</th>
+        <th>Elevation gain in meters</th>
+    </tr>
+    <tr th:each="team: ${leaderBoard.bettamma}">
+        <td th:text="${team.key}"/>
+        <td th:text="${team.value}"/>
+    </tr>
+</table>
+
+Mr Alamaari
+<table border="1">
+    <tr>
+        <th>Athlete name</th>
+        <th>Kms</th>
+    </tr>
+    <tr th:each="team: ${leaderBoard.mrAlemaari}">
+        <td th:text="${team.key}"/>
+        <td th:text="${team.value}"/>
+    </tr>
+</table>
+
+Ms Alamaari
+<table border="1">
+    <tr>
+        <th>Athlete name</th>
+        <th>Kms</th>
+    </tr>
+    <tr th:each="team: ${leaderBoard.msAlemaari}">
+        <td th:text="${team.key}"/>
+        <td th:text="${team.value}"/>
+    </tr>
+</table>
+
+</body>
+</html>
