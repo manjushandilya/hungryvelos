@@ -73,8 +73,7 @@
                     <appName>hungryvelos</appName>
                     <jdkVersion>15</jdkVersion>
                     <processTypes>
-                        <web>java -Dserver.port=$PORT -cp target/classes:target/dependency/*
-                            com.velokofi.hungryvelos.HungryVelosApplication
+                        <web>java $JAVA_OPTS -Dserver.port=$PORT -cp target/classes:target/dependency/* com.velokofi.hungryvelos.HungryVelosApplication
                         </web>
                     </processTypes>
                 </configuration>
