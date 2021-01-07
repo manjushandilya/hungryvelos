@@ -1,4 +1,4 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.repository;
 
 public interface TeamConstants {
 

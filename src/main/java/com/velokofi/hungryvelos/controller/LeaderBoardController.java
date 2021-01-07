@@ -1,8 +1,11 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.controller;
 
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.velokofi.hungryvelos.model.*;
+import com.velokofi.hungryvelos.repository.PersistenceManager;
+import com.velokofi.hungryvelos.repository.TeamsRepository;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
@@ -32,16 +35,19 @@ import static java.util.stream.Collectors.*;
 public final class LeaderBoardController {
 
     public static final int INDIVIDUAL_TARGET = 250;
-
-    public enum MetricType {DISTANCE, ELEVATION}
-
     private final TeamsRepository teamsRepository;
-
     private final RestTemplate restTemplate;
 
     public LeaderBoardController(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
         this.teamsRepository = new TeamsRepository();
+    }
+
+    private static String humanReadableFormat(final Duration duration) {
+        return String.format("%sd %sh %sm", duration.toDays(),
+                duration.toHours() - TimeUnit.DAYS.toHours(duration.toDays()),
+                duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours()),
+                duration.getSeconds() - TimeUnit.MINUTES.toSeconds(duration.toMinutes()));
     }
 
     @GetMapping("/")
@@ -238,11 +244,6 @@ public final class LeaderBoardController {
         return new BigDecimal(val).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
-    private static String humanReadableFormat(final Duration duration) {
-        return String.format("%sd %sh %sm", duration.toDays(),
-                duration.toHours() - TimeUnit.DAYS.toHours(duration.toDays()),
-                duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours()),
-                duration.getSeconds() - TimeUnit.MINUTES.toSeconds(duration.toMinutes()));
-    }
+    private enum MetricType {DISTANCE, ELEVATION}
 
 }

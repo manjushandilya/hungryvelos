@@ -1,4 +1,4 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.model;
 
 public class TeamMember {
 

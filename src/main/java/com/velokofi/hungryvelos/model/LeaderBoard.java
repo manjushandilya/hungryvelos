@@ -1,4 +1,4 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.model;
 
 import java.util.List;
 import java.util.Map;
