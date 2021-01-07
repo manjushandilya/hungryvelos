@@ -93,7 +93,7 @@ public class ScheduledTasks {
             //System.out.println("Refresh token response: " + response);
 
             RefreshTokenResponse refreshTokenResponse = mapper.readValue(response.getBody(), RefreshTokenResponse.class);
-            PersistenceManager.delete(client.getPrincipalName());
+            PersistenceManager.deleteClient(client.getPrincipalName());
 
             final OAuth2AccessToken accessToken = new OAuth2AccessToken(
                     OAuth2AccessToken.TokenType.BEARER,

@@ -18,7 +18,7 @@ public final class PersistenceManager {
 
             final File file = new File(dir, String.valueOf(activity.getId()));
             if (file.exists()) {
-                delete(String.valueOf(activity.getId()));
+                deleteActivity(String.valueOf(activity.getId()));
             }
 
             //System.out.println("Creating new file: " + file.getAbsolutePath());
@@ -70,7 +70,7 @@ public final class PersistenceManager {
 
             final File file = new File(dir, String.valueOf(client.getPrincipalName()));
             if (file.exists()) {
-                delete(client.getPrincipalName());
+                deleteClient(client.getPrincipalName());
             }
 
             //System.out.println("Creating new file: " + file.getAbsolutePath());
@@ -111,7 +111,20 @@ public final class PersistenceManager {
         return results;
     }
 
-    public static synchronized void delete(final String fileName) {
+    public static synchronized void deleteActivity(final String fileName) {
+        try {
+            final File dir = new File(getActivityFilePath());
+            final File file = new File(dir, fileName);
+            if (file.exists()) {
+                //System.out.println("Deleting file: " + file.getName());
+                file.delete();
+            }
+        } catch (final Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static synchronized void deleteClient(final String fileName) {
         try {
             final File dir = new File(getClientFilePath());
             final File file = new File(dir, fileName);
