@@ -1,7 +1,5 @@
-package com.velokofi.hungryvelos.repository;
+package com.velokofi.hungryvelos;
 
-import com.velokofi.hungryvelos.Application;
-import com.velokofi.hungryvelos.model.AthleteActivity;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 
 import java.io.*;
@@ -20,7 +18,7 @@ public final class PersistenceManager {
 
             final File file = new File(dir, String.valueOf(activity.getId()));
             if (file.exists()) {
-                deleteActivity(String.valueOf(activity.getId()));
+                delete(String.valueOf(activity.getId()));
             }
 
             //System.out.println("Creating new file: " + file.getAbsolutePath());
@@ -72,7 +70,7 @@ public final class PersistenceManager {
 
             final File file = new File(dir, String.valueOf(client.getPrincipalName()));
             if (file.exists()) {
-                deleteClient(client.getPrincipalName());
+                delete(client.getPrincipalName());
             }
 
             //System.out.println("Creating new file: " + file.getAbsolutePath());
@@ -113,7 +111,7 @@ public final class PersistenceManager {
         return results;
     }
 
-    public static synchronized void deleteClient(final String fileName) {
+    public static synchronized void delete(final String fileName) {
         try {
             final File dir = new File(getClientFilePath());
             final File file = new File(dir, fileName);
@@ -126,59 +124,11 @@ public final class PersistenceManager {
         }
     }
 
-    public static synchronized void deleteActivity(final String fileName) {
-        try {
-            final File dir = new File(getActivityFilePath());
-            final File file = new File(dir, fileName);
-            if (file.exists()) {
-                //System.out.println("Deleting file: " + file.getName());
-                file.delete();
-            }
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static synchronized void deleteAll() {
-        try {
-            deleteDirectory(new File(getClientFilePath()));
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            deleteDirectory(new File(getActivityFilePath()));
-        } catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void deleteDirectory(final File directory) {
-        // if the file is directory or not
-        if (directory.isDirectory()) {
-            final File[] files = directory.listFiles();
-
-            // if the directory contains any file
-            if (files != null) {
-                for (final File file : files) {
-                    // recursive call if the subdirectory is non-empty
-                    deleteDirectory(file);
-                }
-            }
-        }
-
-        if (directory.delete()) {
-            System.out.println(directory + " is deleted");
-        } else {
-            System.out.println("Directory not deleted");
-        }
-    }
-
     private static String getClientFilePath() {
         final StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.home"));
         path.append(File.separator);
-        path.append(Application.class.getSimpleName());
+        path.append(HungryVelosApplication.class.getSimpleName());
         path.append(File.separator);
         path.append("clients");
         return path.toString();
@@ -188,7 +138,7 @@ public final class PersistenceManager {
         final StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.home"));
         path.append(File.separator);
-        path.append(Application.class.getSimpleName());
+        path.append(HungryVelosApplication.class.getSimpleName());
         path.append(File.separator);
         path.append("activities");
         return path.toString();

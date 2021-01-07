@@ -1,4 +1,4 @@
-package com.velokofi.hungryvelos.model;
+package com.velokofi.hungryvelos;
 
 public class RefreshTokenResponse {
 

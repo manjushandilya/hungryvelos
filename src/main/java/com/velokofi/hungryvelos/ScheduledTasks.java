@@ -1,11 +1,7 @@
-package com.velokofi.hungryvelos.cron;
+package com.velokofi.hungryvelos;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.velokofi.hungryvelos.model.AthleteActivity;
-import com.velokofi.hungryvelos.model.RefreshTokenRequest;
-import com.velokofi.hungryvelos.model.RefreshTokenResponse;
-import com.velokofi.hungryvelos.repository.PersistenceManager;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -97,7 +93,7 @@ public class ScheduledTasks {
             //System.out.println("Refresh token response: " + response);
 
             RefreshTokenResponse refreshTokenResponse = mapper.readValue(response.getBody(), RefreshTokenResponse.class);
-            PersistenceManager.deleteClient(client.getPrincipalName());
+            PersistenceManager.delete(client.getPrincipalName());
 
             final OAuth2AccessToken accessToken = new OAuth2AccessToken(
                     OAuth2AccessToken.TokenType.BEARER,

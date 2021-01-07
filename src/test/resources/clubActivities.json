@@ -1,0 +1,3000 @@
+[
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "A ride with Junior ",
+    "distance": 5321.8,
+    "moving_time": 2722,
+    "elapsed_time": 5424,
+    "total_elevation_gain": 152.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Lakshmi",
+        "lastname": "N."
+    },
+    "name": "Morning Ride",
+    "distance": 10189.0,
+    "moving_time": 2328,
+    "elapsed_time": 2396,
+    "total_elevation_gain": 97.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 72 Nandi Betta - Salutations-",
+    "distance": 42201.2,
+    "moving_time": 8235,
+    "elapsed_time": 12402,
+    "total_elevation_gain": 585.8,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Morning Ride",
+    "distance": 21547.0,
+    "moving_time": 3661,
+    "elapsed_time": 4627,
+    "total_elevation_gain": 148.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "First Solo and 25th century ride....",
+    "distance": 111874.0,
+    "moving_time": 21402,
+    "elapsed_time": 26058,
+    "total_elevation_gain": 614.0,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 82819.4,
+    "moving_time": 14212,
+    "elapsed_time": 20082,
+    "total_elevation_gain": 880.7,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Taming the Nandi",
+    "distance": 82819.4,
+    "moving_time": 14212,
+    "elapsed_time": 20082,
+    "total_elevation_gain": 880.7,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "Spoilt Knee.. Eff It",
+    "distance": 21026.8,
+    "moving_time": 4214,
+    "elapsed_time": 4935,
+    "total_elevation_gain": 167.5,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "First Nandi Climb!",
+    "distance": 142752.0,
+    "moving_time": 22163,
+    "elapsed_time": 30612,
+    "total_elevation_gain": 1253.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "Nandi climb",
+    "distance": 150375.0,
+    "moving_time": 22653,
+    "elapsed_time": 31493,
+    "total_elevation_gain": 1296.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Morning Ride",
+    "distance": 11873.3,
+    "moving_time": 2721,
+    "elapsed_time": 3126,
+    "total_elevation_gain": 61.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Prashanth",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 22794.4,
+    "moving_time": 4503,
+    "elapsed_time": 12695,
+    "total_elevation_gain": 190.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "The Hungry Velos challenge launch!! Thank you Anil Kadsur for gracing the occasion and for sharing your story , it was indeed a privilege for all of us",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sagar",
+        "lastname": "M."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manasa",
+        "lastname": "B."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Nanda",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Prashanth",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Muralidhar",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11287.1,
+    "moving_time": 2379,
+    "elapsed_time": 24948,
+    "total_elevation_gain": 53.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Velovkofi ride",
+    "distance": 10510.8,
+    "moving_time": 2892,
+    "elapsed_time": 13108,
+    "total_elevation_gain": 45.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "Lovely day- #velokofi Team challenge launch",
+    "distance": 11726.9,
+    "moving_time": 2946,
+    "elapsed_time": 13693,
+    "total_elevation_gain": 60.8,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 17779.7,
+    "moving_time": 4312,
+    "elapsed_time": 8302,
+    "total_elevation_gain": 101.3,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 40568.9,
+    "moving_time": 8517,
+    "elapsed_time": 25560,
+    "total_elevation_gain": 303.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "#velokofi",
+    "distance": 10059.7,
+    "moving_time": 2220,
+    "elapsed_time": 4806,
+    "total_elevation_gain": 85.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 35392.2,
+    "moving_time": 8001,
+    "elapsed_time": 10896,
+    "total_elevation_gain": 207.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "Velokofi Launch",
+    "distance": 50211.2,
+    "moving_time": 12810,
+    "elapsed_time": 21387,
+    "total_elevation_gain": 401.7,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 5385.9,
+    "moving_time": 1108,
+    "elapsed_time": 1482,
+    "total_elevation_gain": 47.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 6663.7,
+    "moving_time": 2996,
+    "elapsed_time": 2996,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "London",
+    "distance": 10097.3,
+    "moving_time": 1156,
+    "elapsed_time": 1156,
+    "total_elevation_gain": 46.0,
+    "type": "VirtualRide"
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 15293.8,
+    "moving_time": 3030,
+    "elapsed_time": 3718,
+    "total_elevation_gain": 87.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Watopia",
+    "distance": 30258.7,
+    "moving_time": 4263,
+    "elapsed_time": 5380,
+    "total_elevation_gain": 273.0,
+    "type": "VirtualRide"
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 23777.1,
+    "moving_time": 5985,
+    "elapsed_time": 5985,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Tobo hill top is no longer accessible for general public...#VeloKofi newbies ride 2 ",
+    "distance": 75597.0,
+    "moving_time": 15390,
+    "elapsed_time": 29630,
+    "total_elevation_gain": 566.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharathi",
+        "lastname": "M."
+    },
+    "name": "Morning Ride",
+    "distance": 24375.9,
+    "moving_time": 6896,
+    "elapsed_time": 39488,
+    "total_elevation_gain": 193.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Nanda",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 50509.1,
+    "moving_time": 21633,
+    "elapsed_time": 24762,
+    "total_elevation_gain": 392.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Morning Ride",
+    "distance": 42938.5,
+    "moving_time": 9292,
+    "elapsed_time": 18056,
+    "total_elevation_gain": 273.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharadwaja",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 58500.5,
+    "moving_time": 17775,
+    "elapsed_time": 28793,
+    "total_elevation_gain": 456.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharathi",
+        "lastname": "M."
+    },
+    "name": "Morning Ride",
+    "distance": 58357.7,
+    "moving_time": 15018,
+    "elapsed_time": 29464,
+    "total_elevation_gain": 548.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 58012.3,
+    "moving_time": 14946,
+    "elapsed_time": 29464,
+    "total_elevation_gain": 547.7,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 49178.1,
+    "moving_time": 8517,
+    "elapsed_time": 11164,
+    "total_elevation_gain": 303.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 70. #Velokofi prep round",
+    "distance": 47718.5,
+    "moving_time": 7993,
+    "elapsed_time": 11209,
+    "total_elevation_gain": 263.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 61882.6,
+    "moving_time": 12316,
+    "elapsed_time": 23040,
+    "total_elevation_gain": 470.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "Tobo Hills",
+    "distance": 75543.7,
+    "moving_time": 17329,
+    "elapsed_time": 28306,
+    "total_elevation_gain": 671.9,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 5104.4,
+    "moving_time": 1281,
+    "elapsed_time": 3463,
+    "total_elevation_gain": 35.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 7869.3,
+    "moving_time": 2429,
+    "elapsed_time": 3885,
+    "total_elevation_gain": 66.8,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 21708.0,
+    "moving_time": 4239,
+    "elapsed_time": 4239,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 5804.2,
+    "moving_time": 1430,
+    "elapsed_time": 1916,
+    "total_elevation_gain": 39.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "Around Neeladri Nagar",
+    "distance": 14180.3,
+    "moving_time": 2721,
+    "elapsed_time": 2986,
+    "total_elevation_gain": 126.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Morning Ride",
+    "distance": 40409.5,
+    "moving_time": 8299,
+    "elapsed_time": 11636,
+    "total_elevation_gain": 276.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Anekal! ",
+    "distance": 78789.7,
+    "moving_time": 13709,
+    "elapsed_time": 21088,
+    "total_elevation_gain": 474.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 69 of TD100",
+    "distance": 42237.0,
+    "moving_time": 7303,
+    "elapsed_time": 7778,
+    "total_elevation_gain": 259.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 69...Just around",
+    "distance": 46607.7,
+    "moving_time": 8502,
+    "elapsed_time": 11383,
+    "total_elevation_gain": 275.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 79786.6,
+    "moving_time": 17239,
+    "elapsed_time": 25501,
+    "total_elevation_gain": 762.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharadwaja",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 82899.9,
+    "moving_time": 19930,
+    "elapsed_time": 26154,
+    "total_elevation_gain": 860.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 75538.0,
+    "moving_time": 15507,
+    "elapsed_time": 24676,
+    "total_elevation_gain": 750.4,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 13545.2,
+    "moving_time": 2400,
+    "elapsed_time": 2672,
+    "total_elevation_gain": 98.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 17140.3,
+    "moving_time": 3687,
+    "elapsed_time": 3687,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 0.0,
+    "moving_time": 3032,
+    "elapsed_time": 3032,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 19309.3,
+    "moving_time": 4047,
+    "elapsed_time": 6759,
+    "total_elevation_gain": 167.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 4669.6,
+    "moving_time": 952,
+    "elapsed_time": 1167,
+    "total_elevation_gain": 70.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "amarnath",
+        "lastname": "V."
+    },
+    "name": "Morning Ride",
+    "distance": 35111.1,
+    "moving_time": 9366,
+    "elapsed_time": 13767,
+    "total_elevation_gain": 241.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharadwaja",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 22427.5,
+    "moving_time": 7677,
+    "elapsed_time": 14171,
+    "total_elevation_gain": 155.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "sunil",
+        "lastname": "A."
+    },
+    "name": "Morning Ride",
+    "distance": 100760.0,
+    "moving_time": 22126,
+    "elapsed_time": 29013,
+    "total_elevation_gain": 666.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 40826.0,
+    "moving_time": 7433,
+    "elapsed_time": 8149,
+    "total_elevation_gain": 282.7,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velokofi",
+    "distance": 85186.6,
+    "moving_time": 17275,
+    "elapsed_time": 20773,
+    "total_elevation_gain": 473.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Evening ride",
+    "distance": 12118.6,
+    "moving_time": 2474,
+    "elapsed_time": 4768,
+    "total_elevation_gain": 60.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Lunch Ride",
+    "distance": 36329.2,
+    "moving_time": 7155,
+    "elapsed_time": 9348,
+    "total_elevation_gain": 327.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Lunch Ride",
+    "distance": 0.0,
+    "moving_time": 3700,
+    "elapsed_time": 3700,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 0.0,
+    "moving_time": 3649,
+    "elapsed_time": 3649,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 5784.8,
+    "moving_time": 1870,
+    "elapsed_time": 2187,
+    "total_elevation_gain": 56.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manasa",
+        "lastname": "B."
+    },
+    "name": "Morning Ride",
+    "distance": 4080.6,
+    "moving_time": 1497,
+    "elapsed_time": 1497,
+    "total_elevation_gain": 39.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Day 67",
+    "distance": 41206.4,
+    "moving_time": 6744,
+    "elapsed_time": 7499,
+    "total_elevation_gain": 241.5,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 51209.9,
+    "moving_time": 11273,
+    "elapsed_time": 15079,
+    "total_elevation_gain": 251.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "A Dam, A Park, and a park beside the dam",
+    "distance": 176253.0,
+    "moving_time": 25093,
+    "elapsed_time": 37512,
+    "total_elevation_gain": 1388.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 176601.0,
+    "moving_time": 25223,
+    "elapsed_time": 40366,
+    "total_elevation_gain": 1306.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 67 Krishnagiri- Tough",
+    "distance": 176453.0,
+    "moving_time": 27874,
+    "elapsed_time": 37369,
+    "total_elevation_gain": 1374.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Evening Ride",
+    "distance": 10544.0,
+    "moving_time": 3149,
+    "elapsed_time": 4295,
+    "total_elevation_gain": 67.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 4847.0,
+    "moving_time": 1379,
+    "elapsed_time": 2443,
+    "total_elevation_gain": 46.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Evening Short ride",
+    "distance": 7242.0,
+    "moving_time": 2208,
+    "elapsed_time": 3718,
+    "total_elevation_gain": 40.9,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 5299.9,
+    "moving_time": 1620,
+    "elapsed_time": 1938,
+    "total_elevation_gain": 50.5,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manasa",
+        "lastname": "B."
+    },
+    "name": "Testing new bike 💃",
+    "distance": 2577.7,
+    "moving_time": 927,
+    "elapsed_time": 958,
+    "total_elevation_gain": 30.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Misty misty morning ",
+    "distance": 11107.0,
+    "moving_time": 2162,
+    "elapsed_time": 23769,
+    "total_elevation_gain": 56.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 40951.4,
+    "moving_time": 7422,
+    "elapsed_time": 15267,
+    "total_elevation_gain": 285.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 65 CBD-Domlur-Ecity loop",
+    "distance": 60619.6,
+    "moving_time": 10493,
+    "elapsed_time": 16500,
+    "total_elevation_gain": 331.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Puncher short ride🙃",
+    "distance": 3548.6,
+    "moving_time": 1141,
+    "elapsed_time": 1159,
+    "total_elevation_gain": 21.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Night mare ride... 4 punctures 🙃",
+    "distance": 44150.9,
+    "moving_time": 9566,
+    "elapsed_time": 14079,
+    "total_elevation_gain": 250.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 11736.4,
+    "moving_time": 2984,
+    "elapsed_time": 8004,
+    "total_elevation_gain": 83.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Afternoon spin ",
+    "distance": 8968.7,
+    "moving_time": 2090,
+    "elapsed_time": 18700,
+    "total_elevation_gain": 59.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharathi",
+        "lastname": "M."
+    },
+    "name": "Lunch Ride",
+    "distance": 12083.2,
+    "moving_time": 3781,
+    "elapsed_time": 29916,
+    "total_elevation_gain": 120.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Lunch Ride",
+    "distance": 3790.6,
+    "moving_time": 864,
+    "elapsed_time": 913,
+    "total_elevation_gain": 26.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Morning Ride",
+    "distance": 5733.0,
+    "moving_time": 1642,
+    "elapsed_time": 3132,
+    "total_elevation_gain": 20.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 36367.9,
+    "moving_time": 5936,
+    "elapsed_time": 6142,
+    "total_elevation_gain": 311.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi ",
+    "distance": 44898.5,
+    "moving_time": 9183,
+    "elapsed_time": 10260,
+    "total_elevation_gain": 233.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 42392.9,
+    "moving_time": 6762,
+    "elapsed_time": 8168,
+    "total_elevation_gain": 267.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 22326.9,
+    "moving_time": 4403,
+    "elapsed_time": 8570,
+    "total_elevation_gain": 166.9,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 5922.2,
+    "moving_time": 974,
+    "elapsed_time": 994,
+    "total_elevation_gain": 74.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Evening Ride",
+    "distance": 8362.0,
+    "moving_time": 1759,
+    "elapsed_time": 3339,
+    "total_elevation_gain": 82.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 7609.2,
+    "moving_time": 1600,
+    "elapsed_time": 1705,
+    "total_elevation_gain": 45.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 5237.0,
+    "moving_time": 1025,
+    "elapsed_time": 1416,
+    "total_elevation_gain": 71.4,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 9280.3,
+    "moving_time": 1165,
+    "elapsed_time": 1574,
+    "total_elevation_gain": 127.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 3976.8,
+    "moving_time": 938,
+    "elapsed_time": 938,
+    "total_elevation_gain": 20.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "Bg-TK Loop",
+    "distance": 44034.4,
+    "moving_time": 6881,
+    "elapsed_time": 7153,
+    "total_elevation_gain": 395.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Lunch Ride",
+    "distance": 1365.3,
+    "moving_time": 332,
+    "elapsed_time": 120992,
+    "total_elevation_gain": 9.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 3133.2,
+    "moving_time": 744,
+    "elapsed_time": 1766,
+    "total_elevation_gain": 27.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 11944.8,
+    "moving_time": 2135,
+    "elapsed_time": 2676,
+    "total_elevation_gain": 66.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Morning ride",
+    "distance": 15046.9,
+    "moving_time": 1871,
+    "elapsed_time": 2985,
+    "total_elevation_gain": 32.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Sunshine and Smiles",
+    "distance": 41954.0,
+    "moving_time": 8426,
+    "elapsed_time": 27801,
+    "total_elevation_gain": 283.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 64. Ecity-HSR-Koramangala loop",
+    "distance": 41234.7,
+    "moving_time": 7096,
+    "elapsed_time": 8606,
+    "total_elevation_gain": 233.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi ",
+    "distance": 40882.2,
+    "moving_time": 8645,
+    "elapsed_time": 10542,
+    "total_elevation_gain": 237.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 42183.0,
+    "moving_time": 7383,
+    "elapsed_time": 10003,
+    "total_elevation_gain": 335.7,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Evening Ride",
+    "distance": 16115.3,
+    "moving_time": 3513,
+    "elapsed_time": 5777,
+    "total_elevation_gain": 185.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 23824.0,
+    "moving_time": 4867,
+    "elapsed_time": 7096,
+    "total_elevation_gain": 147.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 63. Coffee with Maha-Lunch at Sis’s place",
+    "distance": 75353.0,
+    "moving_time": 13282,
+    "elapsed_time": 19252,
+    "total_elevation_gain": 443.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 20822.4,
+    "moving_time": 6024,
+    "elapsed_time": 13427,
+    "total_elevation_gain": 113.9,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manasa",
+        "lastname": "B."
+    },
+    "name": "Morning Ride",
+    "distance": 21513.1,
+    "moving_time": 7591,
+    "elapsed_time": 13414,
+    "total_elevation_gain": 126.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "VeloKofi - welcoming the newbies ",
+    "distance": 21043.9,
+    "moving_time": 5556,
+    "elapsed_time": 54568,
+    "total_elevation_gain": 124.8,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Nanda",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 21043.9,
+    "moving_time": 5556,
+    "elapsed_time": 54568,
+    "total_elevation_gain": 124.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharathi",
+        "lastname": "M."
+    },
+    "name": "VeloKofi welcome ride ",
+    "distance": 21043.9,
+    "moving_time": 5556,
+    "elapsed_time": 54568,
+    "total_elevation_gain": 124.8,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Deepu",
+        "lastname": "S."
+    },
+    "name": "City Loop : Morning Ride",
+    "distance": 28313.9,
+    "moving_time": 8556,
+    "elapsed_time": 19116,
+    "total_elevation_gain": 163.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Andhra - Ravulapalem - Atreyapuram - bobrlankha ride",
+    "distance": 75864.8,
+    "moving_time": 14061,
+    "elapsed_time": 17671,
+    "total_elevation_gain": 154.0,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharadwaja",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 33169.5,
+    "moving_time": 12415,
+    "elapsed_time": 20536,
+    "total_elevation_gain": 211.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Morning Ride",
+    "distance": 19258.3,
+    "moving_time": 4236,
+    "elapsed_time": 5325,
+    "total_elevation_gain": 151.2,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sagar",
+        "lastname": "M."
+    },
+    "name": "Morning Ride",
+    "distance": 60001.8,
+    "moving_time": 11331,
+    "elapsed_time": 31273,
+    "total_elevation_gain": 369.3,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "I don’t have friends .. I have family -Dom Toretto.. furious 7",
+    "distance": 40227.4,
+    "moving_time": 9770,
+    "elapsed_time": 15408,
+    "total_elevation_gain": 268.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 14017.1,
+    "moving_time": 3060,
+    "elapsed_time": 4220,
+    "total_elevation_gain": 163.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 30104.4,
+    "moving_time": 4707,
+    "elapsed_time": 5242,
+    "total_elevation_gain": 165.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 25171.1,
+    "moving_time": 5485,
+    "elapsed_time": 7959,
+    "total_elevation_gain": 248.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Amazing lakes and super elevation",
+    "distance": 143373.0,
+    "moving_time": 24956,
+    "elapsed_time": 38766,
+    "total_elevation_gain": 1053.3,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Prashanth",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 175776.0,
+    "moving_time": 31928,
+    "elapsed_time": 45744,
+    "total_elevation_gain": 1184.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 113222.0,
+    "moving_time": 17840,
+    "elapsed_time": 29903,
+    "total_elevation_gain": 827.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sai",
+        "lastname": "S."
+    },
+    "name": "#TDH Day 62 around two beautiful lakes #veloKofi",
+    "distance": 141666.0,
+    "moving_time": 22750,
+    "elapsed_time": 37374,
+    "total_elevation_gain": 1051.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "A tryst with serenity...",
+    "distance": 142540.0,
+    "moving_time": 25011,
+    "elapsed_time": 43243,
+    "total_elevation_gain": 1058.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "A random loop TDH 4.2",
+    "distance": 41078.6,
+    "moving_time": 10178,
+    "elapsed_time": 13691,
+    "total_elevation_gain": 384.6,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Korukonda gokavaram ride with Suren wonderful rider",
+    "distance": 77308.7,
+    "moving_time": 15209,
+    "elapsed_time": 19429,
+    "total_elevation_gain": 299.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "First fifty with Suku \u0026 Srini",
+    "distance": 51680.1,
+    "moving_time": 12884,
+    "elapsed_time": 17546,
+    "total_elevation_gain": 490.3,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 5304.6,
+    "moving_time": 882,
+    "elapsed_time": 1253,
+    "total_elevation_gain": 60.5,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Tour 100 day 62",
+    "distance": 177164.0,
+    "moving_time": 30773,
+    "elapsed_time": 59309,
+    "total_elevation_gain": 1253.5,
+    "type": "Ride",
+    "workout_type": 11
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 15295.0,
+    "moving_time": 3140,
+    "elapsed_time": 8216,
+    "total_elevation_gain": 193.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi .. that moment when he don’t need his dad support.. he likes elevation unlike his dad 😀",
+    "distance": 1979.6,
+    "moving_time": 1436,
+    "elapsed_time": 1667,
+    "total_elevation_gain": 18.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "This place is also known as the Champaka Dhama",
+    "distance": 40395.5,
+    "moving_time": 7664,
+    "elapsed_time": 23370,
+    "total_elevation_gain": 262.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "A slooow morning ride",
+    "distance": 11455.0,
+    "moving_time": 3171,
+    "elapsed_time": 5070,
+    "total_elevation_gain": 110.8,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manasa",
+        "lastname": "B."
+    },
+    "name": "Morning Ride",
+    "distance": 11383.7,
+    "moving_time": 3631,
+    "elapsed_time": 5085,
+    "total_elevation_gain": 111.6,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Airport road and cycling beast VP \u0026 Suku ",
+    "distance": 40910.2,
+    "moving_time": 8056,
+    "elapsed_time": 9403,
+    "total_elevation_gain": 283.1,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "TDH 4.1",
+    "distance": 57132.8,
+    "moving_time": 10461,
+    "elapsed_time": 11504,
+    "total_elevation_gain": 406.2,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 75354.4,
+    "moving_time": 12545,
+    "elapsed_time": 13545,
+    "total_elevation_gain": 598.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Tour 100 day 61",
+    "distance": 51846.7,
+    "moving_time": 9009,
+    "elapsed_time": 9704,
+    "total_elevation_gain": 307.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sagar",
+        "lastname": "M."
+    },
+    "name": "Evening Ride",
+    "distance": 30055.5,
+    "moving_time": 3157,
+    "elapsed_time": 3435,
+    "total_elevation_gain": 148.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 28273.6,
+    "moving_time": 5655,
+    "elapsed_time": 8375,
+    "total_elevation_gain": 215.1,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Lunch Ride",
+    "distance": 11693.2,
+    "moving_time": 2292,
+    "elapsed_time": 3469,
+    "total_elevation_gain": 63.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Lunch Ride",
+    "distance": 11693.2,
+    "moving_time": 2292,
+    "elapsed_time": 3469,
+    "total_elevation_gain": 63.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "It was called Yellow..",
+    "distance": 15164.3,
+    "moving_time": 2691,
+    "elapsed_time": 3704,
+    "total_elevation_gain": 89.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi",
+    "distance": 15291.4,
+    "moving_time": 2808,
+    "elapsed_time": 3435,
+    "total_elevation_gain": 139.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 60 of TD100",
+    "distance": 28104.3,
+    "moving_time": 4772,
+    "elapsed_time": 5101,
+    "total_elevation_gain": 278.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "#VeLovKofi...",
+    "distance": 82049.2,
+    "moving_time": 10507,
+    "elapsed_time": 11258,
+    "total_elevation_gain": 583.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sagar",
+        "lastname": "M."
+    },
+    "name": "Evening Ride",
+    "distance": 40086.5,
+    "moving_time": 4123,
+    "elapsed_time": 6762,
+    "total_elevation_gain": 222.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Prashanth",
+        "lastname": "S."
+    },
+    "name": "Morning Ride - Ride to Jayanagar, Distance exported to Strava in short, 21kms ride done only 14kms shown in Strava",
+    "distance": 14481.9,
+    "moving_time": 3566,
+    "elapsed_time": 3566,
+    "total_elevation_gain": 113.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Loop 2",
+    "distance": 16937.4,
+    "moving_time": 3458,
+    "elapsed_time": 23731,
+    "total_elevation_gain": 212.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 8938.1,
+    "moving_time": 1589,
+    "elapsed_time": 1745,
+    "total_elevation_gain": 53.2,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 59 of TD100",
+    "distance": 15754.5,
+    "moving_time": 2702,
+    "elapsed_time": 2852,
+    "total_elevation_gain": 145.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ashok",
+        "lastname": "N."
+    },
+    "name": "Morning ride",
+    "distance": 17992.8,
+    "moving_time": 3523,
+    "elapsed_time": 7165,
+    "total_elevation_gain": 85.5,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "TDH 3.12 Nelamangala towards Kunigal",
+    "distance": 51873.6,
+    "moving_time": 8791,
+    "elapsed_time": 9131,
+    "total_elevation_gain": 406.1,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Manjunath",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 32661.9,
+    "moving_time": 7115,
+    "elapsed_time": 11387,
+    "total_elevation_gain": 381.0,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 22366.1,
+    "moving_time": 3984,
+    "elapsed_time": 8909,
+    "total_elevation_gain": 163.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "Morning Ride",
+    "distance": 51240.5,
+    "moving_time": 7601,
+    "elapsed_time": 7601,
+    "total_elevation_gain": 639.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Rajamundary Strom riders ride",
+    "distance": 34049.0,
+    "moving_time": 7078,
+    "elapsed_time": 9793,
+    "total_elevation_gain": 218.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Kaggalipura loop one ",
+    "distance": 30704.1,
+    "moving_time": 5060,
+    "elapsed_time": 6038,
+    "total_elevation_gain": 199.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "One lazy post dinner spin ",
+    "distance": 15421.4,
+    "moving_time": 3069,
+    "elapsed_time": 5500,
+    "total_elevation_gain": 156.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi",
+    "distance": 16952.0,
+    "moving_time": 2723,
+    "elapsed_time": 2928,
+    "total_elevation_gain": 95.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Tough ride towards magadi",
+    "distance": 33468.8,
+    "moving_time": 5924,
+    "elapsed_time": 6795,
+    "total_elevation_gain": 362.1,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 58 of TD100",
+    "distance": 50783.5,
+    "moving_time": 8957,
+    "elapsed_time": 9649,
+    "total_elevation_gain": 387.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Rajamundary airport ride",
+    "distance": 38521.6,
+    "moving_time": 7288,
+    "elapsed_time": 8243,
+    "total_elevation_gain": 157.0,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi .. when Sai Kumar took a ride . Kaniso 3 simha nayake neethege dharmake pratheeka vadre.. kanisade Iro 4 be simhane cyclist cyclist cyclist Kano ",
+    "distance": 29958.8,
+    "moving_time": 6344,
+    "elapsed_time": 8181,
+    "total_elevation_gain": 202.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "TDH 3.11",
+    "distance": 55676.4,
+    "moving_time": 9162,
+    "elapsed_time": 10276,
+    "total_elevation_gain": 409.8,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 64437.8,
+    "moving_time": 10169,
+    "elapsed_time": 11596,
+    "total_elevation_gain": 471.8,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "Morning Misty ride",
+    "distance": 52793.2,
+    "moving_time": 7586,
+    "elapsed_time": 7963,
+    "total_elevation_gain": 645.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sagar",
+        "lastname": "M."
+    },
+    "name": "Evening Ride",
+    "distance": 32399.0,
+    "moving_time": 3135,
+    "elapsed_time": 3228,
+    "total_elevation_gain": 187.0,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Afternoon Ride",
+    "distance": 16066.7,
+    "moving_time": 3007,
+    "elapsed_time": 14460,
+    "total_elevation_gain": 217.7,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 11411.4,
+    "moving_time": 2272,
+    "elapsed_time": 13242,
+    "total_elevation_gain": 102.7,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 4185.9,
+    "moving_time": 1335,
+    "elapsed_time": 1430,
+    "total_elevation_gain": 30.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 57 of TD100",
+    "distance": 50711.3,
+    "moving_time": 8664,
+    "elapsed_time": 9928,
+    "total_elevation_gain": 303.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Dwarapudi Ayyappa Swamy temple ride",
+    "distance": 38196.3,
+    "moving_time": 7220,
+    "elapsed_time": 8224,
+    "total_elevation_gain": 120.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi..bolo Bharat matha ki Jai ",
+    "distance": 42836.1,
+    "moving_time": 9072,
+    "elapsed_time": 11168,
+    "total_elevation_gain": 292.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 83403.4,
+    "moving_time": 11000,
+    "elapsed_time": 11547,
+    "total_elevation_gain": 586.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Andhra dwarapudi night ride",
+    "distance": 30611.6,
+    "moving_time": 5140,
+    "elapsed_time": 7876,
+    "total_elevation_gain": 121.5,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Afternoon Ride",
+    "distance": 18630.5,
+    "moving_time": 4266,
+    "elapsed_time": 5197,
+    "total_elevation_gain": 149.2,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Premchand",
+        "lastname": "R."
+    },
+    "name": "Atreyapuram rajugari pesarattu ride",
+    "distance": 60000.0,
+    "moving_time": 14400,
+    "elapsed_time": 14400,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Morning Ride",
+    "distance": 22426.7,
+    "moving_time": 4920,
+    "elapsed_time": 5564,
+    "total_elevation_gain": 156.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sukumar",
+        "lastname": "S."
+    },
+    "name": "TDH 3.10",
+    "distance": 28081.8,
+    "moving_time": 6128,
+    "elapsed_time": 6486,
+    "total_elevation_gain": 286.2,
+    "type": "Ride",
+    "workout_type": 12
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Ravi",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 21663.2,
+    "moving_time": 4930,
+    "elapsed_time": 6234,
+    "total_elevation_gain": 138.5,
+    "type": "Ride",
+    "workout_type": null
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Bharadwaja",
+        "lastname": "S."
+    },
+    "name": "Morning Ride",
+    "distance": 33358.3,
+    "moving_time": 8130,
+    "elapsed_time": 10289,
+    "total_elevation_gain": 326.4,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Sudarshan",
+        "lastname": "G."
+    },
+    "name": "Winding down ",
+    "distance": 18008.3,
+    "moving_time": 3485,
+    "elapsed_time": 3935,
+    "total_elevation_gain": 116.6,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vipin",
+        "lastname": "D."
+    },
+    "name": "Afternoon Ride",
+    "distance": 57138.4,
+    "moving_time": 8905,
+    "elapsed_time": 9322,
+    "total_elevation_gain": 649.0,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Vidyaprasanna",
+        "lastname": "K."
+    },
+    "name": "Short spin on a borrowed single speed bike!",
+    "distance": 15092.0,
+    "moving_time": 4458,
+    "elapsed_time": 4804,
+    "total_elevation_gain": 95.3,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Chandrakanth",
+        "lastname": "K."
+    },
+    "name": "#velovkofi",
+    "distance": 37975.2,
+    "moving_time": 6973,
+    "elapsed_time": 10031,
+    "total_elevation_gain": 481.9,
+    "type": "Ride",
+    "workout_type": 10
+},
+{
+    "resource_state": 2,
+    "athlete": {
+        "resource_state": 2,
+        "firstname": "Anil",
+        "lastname": "K."
+    },
+    "name": "Day 55 of TD100",
+    "distance": 31452.2,
+    "moving_time": 5254,
+    "elapsed_time": 5423,
+    "total_elevation_gain": 211.7,
+    "type": "Ride",
+    "workout_type": 10
+}
+]
