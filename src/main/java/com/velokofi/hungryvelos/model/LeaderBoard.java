@@ -1,4 +1,6 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.model;
+
+import com.velokofi.hungryvelos.model.AthleteProfile;
 
 import java.util.List;
 import java.util.Map;

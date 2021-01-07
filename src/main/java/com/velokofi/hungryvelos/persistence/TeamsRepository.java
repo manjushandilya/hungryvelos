@@ -1,7 +1,10 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.persistence;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import com.velokofi.hungryvelos.model.Team;
+import com.velokofi.hungryvelos.model.TeamConstants;
+import com.velokofi.hungryvelos.model.TeamMember;
 
 import java.io.StringReader;
 import java.util.ArrayList;

@@ -1,6 +1,9 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.persistence;
 
+import com.velokofi.hungryvelos.Application;
+import com.velokofi.hungryvelos.model.AthleteActivity;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.util.FileSystemUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ public final class PersistenceManager {
             final File dir = new File(getActivityFilePath());
             if (!dir.exists()) {
                 dir.mkdirs();
-                //System.out.println("Created dir: " + dir.getAbsolutePath());
+                System.out.println("Created dir for activities: " + dir.getAbsolutePath());
             }
 
             final File file = new File(dir, String.valueOf(activity.getId()));
@@ -21,10 +24,10 @@ public final class PersistenceManager {
                 deleteActivity(String.valueOf(activity.getId()));
             }
 
-            //System.out.println("Creating new file: " + file.getAbsolutePath());
+            System.out.println("Creating new file: " + file.getAbsolutePath());
             file.createNewFile();
 
-            //System.out.println("Serializing onto file: " + file.getAbsolutePath());
+            System.out.println("Serializing activity onto file: " + file.getAbsolutePath());
 
             final FileOutputStream fileOut = new FileOutputStream(file);
             final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -45,7 +48,7 @@ public final class PersistenceManager {
             for (final File file : files) {
                 try {
                     if (file.isFile()) {
-                        //System.out.println("Deserializing from file: " + file.getName());
+                        System.out.println("Deserializing activity from file: " + file.getName());
                         try (final FileInputStream fileIn = new FileInputStream(file);
                              final ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
                             final AthleteActivity activity = (AthleteActivity) objectIn.readObject();
@@ -65,7 +68,7 @@ public final class PersistenceManager {
             final File dir = new File(getClientFilePath());
             if (!dir.exists()) {
                 dir.mkdirs();
-                //System.out.println("Created dir: " + dir.getAbsolutePath());
+                System.out.println("Created dir for clients: " + dir.getAbsolutePath());
             }
 
             final File file = new File(dir, String.valueOf(client.getPrincipalName()));
@@ -73,10 +76,10 @@ public final class PersistenceManager {
                 deleteClient(client.getPrincipalName());
             }
 
-            //System.out.println("Creating new file: " + file.getAbsolutePath());
+            System.out.println("Creating new file: " + file.getAbsolutePath());
             file.createNewFile();
 
-            //System.out.println("Serializing onto file: " + file.getAbsolutePath());
+            System.out.println("Serializing client onto file: " + file.getAbsolutePath());
 
             final FileOutputStream fileOut = new FileOutputStream(file);
             final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -96,7 +99,7 @@ public final class PersistenceManager {
             for (final File file : files) {
                 try {
                     if (file.isFile()) {
-                        //System.out.println("Deserializing from file: " + file.getName());
+                        System.out.println("Deserializing client from file: " + file.getName());
                         try (final FileInputStream fileIn = new FileInputStream(file);
                              final ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
                             final OAuth2AuthorizedClient client = (OAuth2AuthorizedClient) objectIn.readObject();
@@ -116,7 +119,7 @@ public final class PersistenceManager {
             final File dir = new File(getActivityFilePath());
             final File file = new File(dir, fileName);
             if (file.exists()) {
-                //System.out.println("Deleting file: " + file.getName());
+                System.out.println("Deleting activity in file: " + file.getName());
                 file.delete();
             }
         } catch (final Exception e) {
@@ -129,7 +132,7 @@ public final class PersistenceManager {
             final File dir = new File(getClientFilePath());
             final File file = new File(dir, fileName);
             if (file.exists()) {
-                //System.out.println("Deleting file: " + file.getName());
+                System.out.println("Deleting client in file: " + file.getName());
                 file.delete();
             }
         } catch (final Exception e) {
@@ -137,11 +140,16 @@ public final class PersistenceManager {
         }
     }
 
+    public static synchronized void deleteAll() {
+        FileSystemUtils.deleteRecursively(new File(getActivityFilePath()));
+        FileSystemUtils.deleteRecursively(new File(getClientFilePath()));
+    }
+
     private static String getClientFilePath() {
         final StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.home"));
         path.append(File.separator);
-        path.append(HungryVelosApplication.class.getSimpleName());
+        path.append(Application.class.getSimpleName());
         path.append(File.separator);
         path.append("clients");
         return path.toString();
@@ -151,7 +159,7 @@ public final class PersistenceManager {
         final StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.home"));
         path.append(File.separator);
-        path.append(HungryVelosApplication.class.getSimpleName());
+        path.append(Application.class.getSimpleName());
         path.append(File.separator);
         path.append("activities");
         return path.toString();

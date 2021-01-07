@@ -1,4 +1,4 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,16 +10,20 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableWebSecurity
 @Configuration
-public class HungryVelosSecurity extends WebSecurityConfigurerAdapter {
+public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/resources/**", "/cache/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().oauth2Login();
+        http.authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .oauth2Login();
     }
 
     @Bean

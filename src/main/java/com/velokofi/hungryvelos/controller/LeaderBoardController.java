@@ -1,8 +1,15 @@
-package com.velokofi.hungryvelos;
+package com.velokofi.hungryvelos.controller;
 
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.velokofi.hungryvelos.persistence.PersistenceManager;
+import com.velokofi.hungryvelos.model.Team;
+import com.velokofi.hungryvelos.model.TeamMember;
+import com.velokofi.hungryvelos.persistence.TeamsRepository;
+import com.velokofi.hungryvelos.model.AthleteActivity;
+import com.velokofi.hungryvelos.model.AthleteProfile;
+import com.velokofi.hungryvelos.model.LeaderBoard;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
