@@ -477,20 +477,46 @@
 </script>
 
 <script th:inline="javascript">
-    var ctx2 = document.getElementById("myBarChart");
-    var myBarChart = new Chart(ctx2, {
+    function random_rgba() {
+        var num = Math.round(0xffffff * Math.random());
+        var r = num >> 16;
+        var g = num >> 8 & 255;
+        var b = num & 255;
+        return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+    }
+
+    var ctx3 = document.getElementById('myBarChart');
+    var myChart = new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: [
                 /*[# th:each="team, iterStat: ${leaderBoard.teamTotals}"]*/
-                  "[(${team.key})]"[(${iterStat.last ? '' : ','})]
+	                "[(${team.key})]"[(${iterStat.last ? '' : ','})]
                 /*[/]*/
             ],
-            data: [
-                /*[# th:each="team, iterStat: ${leaderBoard.teamTotals}"]*/
-                    [(${team.value})][(${iterStat.last ? '' : ','})]
-                /*[/]*/
-            ]
+            datasets: [{
+                label: 'Kilometers',
+                data: [
+                    /*[# th:each="team, iterStat: ${leaderBoard.teamTotals}"]*/
+	                    [(${team.value})][(${iterStat.last ? '' : ','})]
+                    /*[/]*/
+                ],
+                backgroundColor: [
+                    /*[# th:each="team, iterStat: ${leaderBoard.teamTotals}"]*/
+	                    [(${'random_rgba()'})][(${iterStat.last ? '' : ','})]
+                    /*[/]*/
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     });
 </script>
