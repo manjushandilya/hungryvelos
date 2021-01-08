@@ -65,6 +65,30 @@ public final class LeaderBoardController {
 
         leaderBoard.setAthleteProfile(athleteProfile);
 
+        for (int page = 1; ; page++) {
+            final StringBuilder url = new StringBuilder();
+            url.append("https://www.strava.com/api/v3/athlete/activities");
+            url.append("?per_page=200");
+            url.append("&after=").append("1609631999"); // Start of 3 Jan 2021
+            url.append("&page=").append(page);
+
+            if (debug) {
+                System.out.println("Hitting url: " + url);
+            }
+
+            String activitiesResponse = getResponse(tokenValue, url.toString());
+
+            if (debug) {
+                System.out.println(activitiesResponse);
+            }
+
+            AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
+            Stream.of(activitiesArray).forEach(activity -> PersistenceManager.persistActivity(activity));
+            if (activitiesArray.length < 200) {
+                break;
+            }
+        }
+
         final List<AthleteActivity> activities = PersistenceManager.retrieveActivities();
 
         final List<Team> teams = teamsRepository.listTeams();
