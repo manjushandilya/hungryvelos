@@ -20,9 +20,9 @@ import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 @Component
-public class ScheduledTasks {
+public class ActivityUpdater {
 
-    @Scheduled(fixedRate = 100000, initialDelay = 50000)
+    @Scheduled(fixedRate = 60 * 1000 * 15, initialDelay = 60 * 1000 * 5)
     public void run() {
         System.out.println("Running scheduled task at: " + LocalDateTime.now());
 
