@@ -3,13 +3,9 @@ package com.velokofi.hungryvelos.controller;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.velokofi.hungryvelos.model.*;
 import com.velokofi.hungryvelos.persistence.PersistenceManager;
-import com.velokofi.hungryvelos.model.Team;
-import com.velokofi.hungryvelos.model.TeamMember;
 import com.velokofi.hungryvelos.persistence.TeamsRepository;
-import com.velokofi.hungryvelos.model.AthleteActivity;
-import com.velokofi.hungryvelos.model.AthleteProfile;
-import com.velokofi.hungryvelos.model.LeaderBoard;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
@@ -55,24 +51,6 @@ public final class LeaderBoardController {
     public ModelAndView leaderboard(@RegisteredOAuth2AuthorizedClient final OAuth2AuthorizedClient client,
                                     @RequestParam(required = false, defaultValue = "false") boolean debug) throws Exception {
 
-        if (debug) {
-            System.out.println("Access Token Value: " + client.getAccessToken().getTokenValue());
-            System.out.println("Access Token Type: " + client.getAccessToken().getTokenType().getValue());
-            System.out.println("Access Token Issued At: " + client.getAccessToken().getIssuedAt());
-            System.out.println("Access Token Expires At: " + client.getAccessToken().getExpiresAt());
-            System.out.println("Access Token Scopes: " + client.getAccessToken().getScopes());
-            System.out.println("Principal Name: " + client.getPrincipalName());
-            System.out.println("Refresh Token Value: " + client.getRefreshToken().getTokenValue());
-            System.out.println("Client Id: " + client.getClientRegistration().getClientId());
-            System.out.println("Client Name: " + client.getClientRegistration().getClientName());
-            System.out.println("Client Secret: " + client.getClientRegistration().getClientSecret());
-            System.out.println("Client Authentication Method: " + client.getClientRegistration().getClientAuthenticationMethod().getValue());
-            System.out.println("Client Registration Id: " + client.getClientRegistration().getRegistrationId());
-            System.out.println("Client Redirect Uri: " + client.getClientRegistration().getRedirectUri());
-            System.out.println("Client Authorization Grant Type: " + client.getClientRegistration().getAuthorizationGrantType().getValue());
-        }
-
-        //TokenStore.TOKENS.add(client);
         PersistenceManager.persistClient(client);
 
         final LeaderBoard leaderBoard = new LeaderBoard();
@@ -86,31 +64,6 @@ public final class LeaderBoardController {
         final AthleteProfile athleteProfile = mapper.readValue(profileResponse, AthleteProfile.class);
 
         leaderBoard.setAthleteProfile(athleteProfile);
-
-        //final List<AthleteActivity> activities = new ArrayList<>();
-        for (int page = 1; ; page++) {
-            final StringBuilder url = new StringBuilder();
-            url.append("https://www.strava.com/api/v3/athlete/activities");
-            url.append("?per_page=200");
-            url.append("&after=").append("1609631999"); // Start of 3 Jan 2021
-            url.append("&page=").append(page);
-
-            if (debug) {
-                System.out.println("Hitting url: " + url);
-            }
-
-            String activitiesResponse = getResponse(tokenValue, url.toString());
-
-            if (debug) {
-                System.out.println(activitiesResponse);
-            }
-
-            AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
-            if (activitiesArray.length < 1) {
-                break;
-            }
-            Stream.of(activitiesArray).forEach(activity -> PersistenceManager.persistActivity(activity));
-        }
 
         final List<AthleteActivity> activities = PersistenceManager.retrieveActivities();
 
