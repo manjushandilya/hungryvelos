@@ -34,9 +34,10 @@ public class ActivityUpdater {
                 e -> e.getAccessToken().getExpiresAt().isBefore(Instant.now())
         ).forEach(e -> refresh(e));
 
-        for (final OAuth2AuthorizedClient entry : PersistenceManager.retrieveClients()) {
+        for (final String name : PersistenceManager.listClients()) {
             try {
-                final String tokenValue = entry.getAccessToken().getTokenValue();
+                final OAuth2AuthorizedClient client = PersistenceManager.retrieveClient(name);
+                final String tokenValue = client.getAccessToken().getTokenValue();
 
                 for (int page = 1; ; page++) {
                     final StringBuilder builder = new StringBuilder();
@@ -54,14 +55,16 @@ public class ActivityUpdater {
                     final HttpEntity<String> request = new HttpEntity<String>(headers);
 
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
-                    if (activitiesResponse.getStatusCode().is2xxSuccessful()) {
+                    if (activitiesResponse.getStatusCode().is4xxClientError()) {
+                        System.out.println("Request failed for client: " + client.getPrincipalName() + " with status code: " + activitiesResponse.getStatusCode());
+                        System.out.println("Expires at is: " + client.getAccessToken().getExpiresAt() + ", Instanct.now() is: " + Instant.now());
+                        refresh(client);
+                    } else if (activitiesResponse.getStatusCode().is2xxSuccessful()) {
                         AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
                         if (activitiesArray.length < 1) {
                             break;
                         }
                         Stream.of(activitiesArray).forEach(activity -> PersistenceManager.persistActivity(activity));
-                    } else {
-                        break;
                     }
                 }
             } catch (final Exception e) {

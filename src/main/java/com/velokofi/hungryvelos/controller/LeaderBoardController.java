@@ -24,7 +24,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Comparator.reverseOrder;
@@ -113,54 +112,72 @@ public final class LeaderBoardController {
             leaderBoard.setRiderCount(memberCount);
         }
 
-        final Map<String, Double> teamTargetsMap = teams.stream().collect(
-                groupingBy(t -> t.getName(), summingDouble(team -> team.getMembers().size() * INDIVIDUAL_TARGET))
-        );
-
-        if (debug) {
-            System.out.println("teamTargetsMap: " + teamTargetsMap);
-        }
-
-        { // team totals and targets
-            final Map<Long, Double> athleteTotalsMap = activities.stream().collect(
+        {
+            // Calculate athlete distance
+            final Map<Long, Double> athleteDistanceMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getDistance() / 1000))
             );
-            if (debug) {
-                System.out.println("athleteTotalsMap: " + athleteTotalsMap);
-            }
+            System.out.println("athleteDistanceMap: " + athleteDistanceMap);
 
-            final Map<Long, Double> athleteProgressMap = athleteTotalsMap.entrySet().stream().collect(
-                    Collectors.toMap(
-                            e -> e.getKey(),
-                            e -> e.getValue() * 100 / INDIVIDUAL_TARGET
+            // Calculate team distance
+            final Map<String, Double> teamDistanceMap = teams.stream().collect(
+                    groupingBy(t -> t.getName(), summingDouble(t -> getAthleteAggregate(t, athleteDistanceMap)))
+            );
+            System.out.println("teamDistanceMap: " + teamDistanceMap);
+            leaderBoard.setTeamDistanceMap(teamDistanceMap);
+
+            // Calculate team average distance
+            final Map<String, Double> teamAvgDistanceMap = teamDistanceMap.entrySet().stream().collect(
+                    toMap(
+                            e -> e.getKey(), e -> e.getValue() / getTeamMemberCount(e.getKey(), teams)
                     )
             );
-            leaderBoard.setAthleteProgressMap(athleteProgressMap);
-            if (debug) {
-                System.out.println("athleteProgressMap: " + athleteProgressMap);
-            }
+            System.out.println("teamAvgDistanceMap: " + teamAvgDistanceMap);
+            leaderBoard.setTeamAvgDistanceMap(teamAvgDistanceMap);
 
-            final Map<String, Double> teamTotalsMap = teams.stream().collect(
-                    groupingBy(t -> t.getName(), summingDouble(t -> getAthleteDistance(t, athleteTotalsMap)))
+            // Calculate athlete elevation
+            final Map<Long, Double> athleteElevationMap = activities.stream().collect(
+                    groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getTotal_elevation_gain()))
             );
-            if (debug) {
-                System.out.println("teamTotalsMap: " + teamTotalsMap);
-            }
+            System.out.println("athleteElevationMap: " + athleteElevationMap);
 
-            final Stream<Entry<String, Double>> teamTotalsSorted = teamTotalsMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
-            final List<Entry<String, Double>> teamTotals = teamTotalsSorted.collect(toList());
-            if (debug) {
-                System.out.println("teamTotals: " + teamTotals);
-            }
-            leaderBoard.setTeamTotals(teamTotals);
+            // Calculate team elevation
+            final Map<String, Double> teamElevationMap = teams.stream().collect(
+                    groupingBy(t -> t.getName(), summingDouble(t -> getAthleteAggregate(t, athleteElevationMap)))
+            );
+            System.out.println("teamElevationMap: " + teamElevationMap);
+            leaderBoard.setTeamElevationMap(teamElevationMap);
 
-            final Map<String, Double> teamProgressMap = teamTotalsMap.entrySet().stream().collect(
-                    Collectors.toMap(
-                            e -> e.getKey(),
-                            e -> round(e.getValue() * 100 / teamTargetsMap.get(e.getKey()))
+            // Calculate team average elevation
+            final Map<String, Double> teamAvgElevationMap = teamElevationMap.entrySet().stream().collect(
+                    toMap(
+                            e -> e.getKey(), e -> e.getValue() / getTeamMemberCount(e.getKey(), teams)
                     )
             );
-            leaderBoard.setTeamProgressMap(teamProgressMap);
+            System.out.println("teamAvgElevationMap: " + teamAvgElevationMap);
+            leaderBoard.setTeamAvgElevationMap(teamAvgElevationMap);
+
+            // Calculate athlete ride count
+            final Map<Long, Double> athleteRideCountMap = activities.stream().collect(
+                    groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> 1D))
+            );
+            System.out.println("athleteRideCountMap: " + athleteRideCountMap);
+
+            // Calculate team ride count
+            final Map<String, Double> teamRideCountMap = teams.stream().collect(
+                    groupingBy(t -> t.getName(), summingDouble(t -> getAthleteAggregate(t, athleteRideCountMap)))
+            );
+            System.out.println("teamRideCountMap: " + teamRideCountMap);
+            leaderBoard.setTeamRidesMap(teamRideCountMap);
+
+            // Calculate team average ride count
+            final Map<String, Double> teamAvgRidesMap = teamRideCountMap.entrySet().stream().collect(
+                    toMap(
+                            e -> e.getKey(), e -> e.getValue() / getTeamMemberCount(e.getKey(), teams)
+                    )
+            );
+            System.out.println("teamAvgRidesMap: " + teamAvgRidesMap);
+            leaderBoard.setTeamAvgRidesMap(teamAvgRidesMap);
         }
 
         leaderBoard.setMrAlemaari(aggregate(activities, teams, "M", MetricType.DISTANCE));
@@ -173,6 +190,14 @@ public final class LeaderBoardController {
         mav.addObject("leaderBoard", leaderBoard);
         mav.addObject("principalName", client.getPrincipalName());
         return mav;
+    }
+
+    private long getTeamMemberCount(final String teamName, final List<Team> teams) {
+        final Optional<Team> optional = teams.stream().filter(t -> t.getName().equals(teamName)).findFirst();
+        if (optional.isPresent()) {
+            return optional.get().getMembers().size();
+        }
+        return 0;
     }
 
     private List<Entry<String, Double>> aggregate(final List<AthleteActivity> activities,
@@ -207,7 +232,7 @@ public final class LeaderBoardController {
         return optional.isPresent();
     }
 
-    private double getAthleteDistance(final Team team, final Map<Long, Double> map) {
+    private double getAthleteAggregate(final Team team, final Map<Long, Double> map) {
         final List<TeamMember> members = team.getMembers();
         double total = 0;
         for (final TeamMember member : members) {

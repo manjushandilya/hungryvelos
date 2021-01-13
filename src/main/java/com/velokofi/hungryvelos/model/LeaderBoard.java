@@ -1,27 +1,33 @@
 package com.velokofi.hungryvelos.model;
 
-import com.velokofi.hungryvelos.model.AthleteProfile;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 public class LeaderBoard {
 
+    // event totals
     private Double totalDistance;
     private Double totalElevation;
     private int totalRides;
     private long movingTime;
     private Double riderAverage;
     private int riderCount;
-
     private String movingTimeInHumanReadableFormat;
 
-    private Map<String, Double> teamProgressMap;
-    private Map<Long, Double> athleteProgressMap;
+    // team totals
+    private Map<String, Double> teamDistanceMap;
+    private Map<String, Double> teamElevationMap;
+    private Map<String, Double> teamRidesMap;
+    private Map<String, Double> teamSpeedMap;
 
-    private List<Entry<String, Double>> teamTotals;
+    // team averages
+    private Map<String, Double> teamAvgDistanceMap;
+    private Map<String, Double> teamAvgElevationMap;
+    private Map<String, Double> teamAvgRidesMap;
+    private Map<String, Double> teamAvgSpeedMap;
 
+    // individual totals
     private List<Entry<String, Double>> bettappa;
     private List<Entry<String, Double>> bettamma;
     private List<Entry<String, Double>> mrAlemaari;
@@ -85,28 +91,68 @@ public class LeaderBoard {
         this.movingTimeInHumanReadableFormat = movingTimeInHumanReadableFormat;
     }
 
-    public Map<String, Double> getTeamProgressMap() {
-        return teamProgressMap;
+    public Map<String, Double> getTeamDistanceMap() {
+        return teamDistanceMap;
     }
 
-    public void setTeamProgressMap(Map<String, Double> teamProgressMap) {
-        this.teamProgressMap = teamProgressMap;
+    public void setTeamDistanceMap(Map<String, Double> teamDistanceMap) {
+        this.teamDistanceMap = teamDistanceMap;
     }
 
-    public Map<Long, Double> getAthleteProgressMap() {
-        return athleteProgressMap;
+    public Map<String, Double> getTeamElevationMap() {
+        return teamElevationMap;
     }
 
-    public void setAthleteProgressMap(Map<Long, Double> athleteProgressMap) {
-        this.athleteProgressMap = athleteProgressMap;
+    public void setTeamElevationMap(Map<String, Double> teamElevationMap) {
+        this.teamElevationMap = teamElevationMap;
     }
 
-    public List<Entry<String, Double>> getTeamTotals() {
-        return teamTotals;
+    public Map<String, Double> getTeamRidesMap() {
+        return teamRidesMap;
     }
 
-    public void setTeamTotals(List<Entry<String, Double>> teamTotals) {
-        this.teamTotals = teamTotals;
+    public void setTeamRidesMap(Map<String, Double> teamRidesMap) {
+        this.teamRidesMap = teamRidesMap;
+    }
+
+    public Map<String, Double> getTeamSpeedMap() {
+        return teamSpeedMap;
+    }
+
+    public void setTeamSpeedMap(Map<String, Double> teamSpeedMap) {
+        this.teamSpeedMap = teamSpeedMap;
+    }
+
+    public Map<String, Double> getTeamAvgDistanceMap() {
+        return teamAvgDistanceMap;
+    }
+
+    public void setTeamAvgDistanceMap(Map<String, Double> teamAvgDistanceMap) {
+        this.teamAvgDistanceMap = teamAvgDistanceMap;
+    }
+
+    public Map<String, Double> getTeamAvgElevationMap() {
+        return teamAvgElevationMap;
+    }
+
+    public void setTeamAvgElevationMap(Map<String, Double> teamAvgElevationMap) {
+        this.teamAvgElevationMap = teamAvgElevationMap;
+    }
+
+    public Map<String, Double> getTeamAvgRidesMap() {
+        return teamAvgRidesMap;
+    }
+
+    public void setTeamAvgRidesMap(Map<String, Double> teamAvgRidesMap) {
+        this.teamAvgRidesMap = teamAvgRidesMap;
+    }
+
+    public Map<String, Double> getTeamAvgSpeedMap() {
+        return teamAvgSpeedMap;
+    }
+
+    public void setTeamAvgSpeedMap(Map<String, Double> teamAvgSpeedMap) {
+        this.teamAvgSpeedMap = teamAvgSpeedMap;
     }
 
     public List<Entry<String, Double>> getBettappa() {
@@ -148,5 +194,4 @@ public class LeaderBoard {
     public void setAthleteProfile(AthleteProfile athleteProfile) {
         this.athleteProfile = athleteProfile;
     }
-
 }

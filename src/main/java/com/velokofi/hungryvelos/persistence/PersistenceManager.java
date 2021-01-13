@@ -90,6 +90,46 @@ public final class PersistenceManager {
         }
     }
 
+    public static synchronized List<String> listClients() {
+        final List<String> results = new ArrayList<>();
+        final String filePath = getClientFilePath();
+        final File[] files = new File(filePath).listFiles();
+
+        if (files != null && files.length > 0) {
+            for (final File file : files) {
+                try {
+                    if (file.isFile()) {
+                        results.add(file.getName());
+                    }
+                } catch (final Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return results;
+    }
+
+    public static synchronized OAuth2AuthorizedClient retrieveClient(final String name) {
+        final String filePath = getClientFilePath();
+        final File[] files = new File(filePath).listFiles();
+
+        if (files != null && files.length > 0) {
+            for (final File file : files) {
+                try {
+                    if (file.isFile() && file.getName().equals(name)) {
+                        try (final FileInputStream fileIn = new FileInputStream(file);
+                             final ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
+                            return (OAuth2AuthorizedClient) objectIn.readObject();
+                        }
+                    }
+                } catch (final Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
     public static synchronized List<OAuth2AuthorizedClient> retrieveClients() {
         final List<OAuth2AuthorizedClient> results = new ArrayList<>();
         final String filePath = getClientFilePath();
