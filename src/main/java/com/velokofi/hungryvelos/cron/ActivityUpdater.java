@@ -2,10 +2,13 @@ package com.velokofi.hungryvelos.cron;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.velokofi.hungryvelos.model.AthleteActivity;
+import com.velokofi.hungryvelos.model.AuthorizedClient;
 import com.velokofi.hungryvelos.model.RefreshTokenRequest;
 import com.velokofi.hungryvelos.model.RefreshTokenResponse;
-import com.velokofi.hungryvelos.model.AthleteActivity;
-import com.velokofi.hungryvelos.persistence.PersistenceManager;
+import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
+import com.velokofi.hungryvelos.persistence.AuthorizedClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -22,6 +25,12 @@ import java.util.stream.Stream;
 @Component
 public class ActivityUpdater {
 
+    @Autowired
+    private AthleteActivityRepository athleteActivityRepo;
+
+    @Autowired
+    private AuthorizedClientRepository oAuthClientRepo;
+
     @Scheduled(fixedRate = 60 * 1000 * 15, initialDelay = 60 * 1000 * 5)
     public void run() {
         System.out.println("Running scheduled task at: " + LocalDateTime.now());
@@ -30,16 +39,14 @@ public class ActivityUpdater {
         mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        PersistenceManager.retrieveClients().stream().filter(
-                e -> e.getAccessToken().getExpiresAt().isBefore(Instant.now())
-        ).forEach(e -> refresh(e));
+        oAuthClientRepo.findAll().stream().filter(
+                e -> AuthorizedClient.fromBytes(e.getBytes()).getAccessToken().getExpiresAt().isBefore(Instant.now())
+        ).forEach(e -> oAuthClientRepo.save(e));
 
-        for (final String name : PersistenceManager.listClients()) {
+        for (final AuthorizedClient client : oAuthClientRepo.findAll()) {
             try {
-                final OAuth2AuthorizedClient client = PersistenceManager.retrieveClient(name);
-                final String tokenValue = client.getAccessToken().getTokenValue();
-
-                System.out.println("Fetching activities for client: " + client.getPrincipalName());
+                final OAuth2AuthorizedClient entry = AuthorizedClient.fromBytes(client.getBytes());
+                final String tokenValue = entry.getAccessToken().getTokenValue();
 
                 for (int page = 1; ; page++) {
                     final StringBuilder builder = new StringBuilder();
@@ -59,14 +66,16 @@ public class ActivityUpdater {
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
                     if (activitiesResponse.getStatusCode().is4xxClientError()) {
                         System.out.println("Request failed for client: " + client.getPrincipalName() + " with status code: " + activitiesResponse.getStatusCode());
-                        System.out.println("Expires at is: " + client.getAccessToken().getExpiresAt() + ", Instant.now() is: " + Instant.now());
+                        System.out.println("Expires at is: " + entry.getAccessToken().getExpiresAt() + ", Instant.now() is: " + Instant.now());
                         refresh(client);
                     } else if (activitiesResponse.getStatusCode().is2xxSuccessful()) {
                         AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
                         if (activitiesArray.length < 1) {
                             break;
                         }
-                        Stream.of(activitiesArray).forEach(activity -> PersistenceManager.persistActivity(activity));
+                        Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                    } else {
+                        break;
                     }
                 }
             } catch (final Exception e) {
@@ -75,8 +84,8 @@ public class ActivityUpdater {
         }
     }
 
-    public void refresh(final OAuth2AuthorizedClient client) {
-        System.out.println("Refreshing auth token for client: " + client.getPrincipalName());
+    public void refresh(final AuthorizedClient entry) {
+        final OAuth2AuthorizedClient client = AuthorizedClient.fromBytes(entry.getBytes());
         final ObjectMapper mapper = new ObjectMapper();
         try {
             final StringBuilder builder = new StringBuilder();
@@ -102,8 +111,8 @@ public class ActivityUpdater {
             final ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, request, String.class);
             //System.out.println("Refresh token response: " + response);
 
-            RefreshTokenResponse refreshTokenResponse = mapper.readValue(response.getBody(), RefreshTokenResponse.class);
-            PersistenceManager.deleteClient(client.getPrincipalName());
+            final RefreshTokenResponse refreshTokenResponse = mapper.readValue(response.getBody(), RefreshTokenResponse.class);
+            oAuthClientRepo.deleteById(client.getPrincipalName());
 
             final OAuth2AccessToken accessToken = new OAuth2AccessToken(
                     OAuth2AccessToken.TokenType.BEARER,
@@ -124,7 +133,10 @@ public class ActivityUpdater {
                     refreshToken
             );
 
-            PersistenceManager.persistClient(newClient);
+            final AuthorizedClient AuthorizedClient = new AuthorizedClient();
+            AuthorizedClient.setPrincipalName(client.getPrincipalName());
+            AuthorizedClient.setBytes(AuthorizedClient.toBytes(newClient));
+            oAuthClientRepo.save(AuthorizedClient);
         } catch (final Exception e) {
             e.printStackTrace();
         }

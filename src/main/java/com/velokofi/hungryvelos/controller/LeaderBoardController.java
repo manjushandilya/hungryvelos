@@ -1,11 +1,12 @@
 package com.velokofi.hungryvelos.controller;
 
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velokofi.hungryvelos.model.*;
-import com.velokofi.hungryvelos.persistence.PersistenceManager;
+import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
+import com.velokofi.hungryvelos.persistence.AuthorizedClientRepository;
 import com.velokofi.hungryvelos.persistence.TeamsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
@@ -33,11 +34,17 @@ import static java.util.stream.Collectors.*;
 @RestController
 public final class LeaderBoardController {
 
-    public enum MetricType {DISTANCE, ELEVATION, SPEED, RIDES}
+    public enum MetricType {DISTANCE, ELEVATION, SPEED}
 
     private final TeamsRepository teamsRepository;
 
     private final RestTemplate restTemplate;
+
+    @Autowired
+    private AthleteActivityRepository athleteActivityRepo;
+
+    @Autowired
+    private AuthorizedClientRepository authorizedClientRepo;
 
     public LeaderBoardController(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -48,7 +55,10 @@ public final class LeaderBoardController {
     public ModelAndView leaderboard(@RegisteredOAuth2AuthorizedClient final OAuth2AuthorizedClient client,
                                     @RequestParam(required = false, defaultValue = "false") boolean debug) throws Exception {
 
-        PersistenceManager.persistClient(client);
+        final AuthorizedClient authorizedClient = new AuthorizedClient();
+        authorizedClient.setPrincipalName(client.getPrincipalName());
+        authorizedClient.setBytes(authorizedClient.toBytes(client));
+        authorizedClientRepo.save(authorizedClient);
 
         final LeaderBoard leaderBoard = new LeaderBoard();
         final ObjectMapper mapper = new ObjectMapper();
@@ -73,20 +83,21 @@ public final class LeaderBoardController {
                 System.out.println("Hitting url: " + url);
             }
 
-            String activitiesResponse = getResponse(tokenValue, url.toString());
+            final String activitiesResponse = getResponse(tokenValue, url.toString());
 
             if (debug) {
                 System.out.println(activitiesResponse);
             }
 
-            AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
-            Stream.of(activitiesArray).forEach(activity -> PersistenceManager.persistActivity(activity));
+            final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
+            Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+
             if (activitiesArray.length < 200) {
                 break;
             }
         }
 
-        final List<AthleteActivity> activities = PersistenceManager.retrieveActivities();
+        final List<AthleteActivity> activities = athleteActivityRepo.findAll();
 
         final List<Team> teams = teamsRepository.listTeams();
         { // event totals
@@ -155,11 +166,17 @@ public final class LeaderBoardController {
             //System.out.println("teamAvgElevationMap: " + teamAvgElevationMap);
             leaderBoard.setTeamAvgElevationMap(teamAvgElevationMap);
 
+            // Calculate athlete rides
+            final Map<String, Integer> athleteRidesMap = activities.stream().collect(
+                    groupingBy(a -> getNameFromId(a.getAthlete().getId(), teams), summingInt(a -> 1))
+            );
+            System.out.println("athleteRidesMap: " + athleteRidesMap);
+            leaderBoard.setRideCountMap(athleteRidesMap);
+
             // Calculate athlete ride count
             final Map<Long, Double> athleteRideCountMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> 1D))
             );
-            System.out.println("athleteRideCountMap: " + athleteRideCountMap);
 
             // Calculate team ride count
             final Map<String, Double> teamRideCountMap = teams.stream().collect(
@@ -191,6 +208,12 @@ public final class LeaderBoardController {
         mav.addObject("leaderBoard", leaderBoard);
         mav.addObject("principalName", client.getPrincipalName());
         return mav;
+    }
+
+    private String getNameFromId(final Long id, final List<Team> teams) {
+        final Set<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toSet());
+        final Optional<TeamMember> optional = teamMembers.stream().filter(tm -> tm.getId() == id).findFirst();
+        return optional.isPresent() ? optional.get().getName() : null;
     }
 
     private long getTeamMemberCount(final String teamName, final List<Team> teams) {

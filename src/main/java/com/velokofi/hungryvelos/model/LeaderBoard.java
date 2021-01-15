@@ -13,6 +13,7 @@ public class LeaderBoard {
     private long movingTime;
     private Double riderAverage;
     private int riderCount;
+
     private String movingTimeInHumanReadableFormat;
 
     // team totals
@@ -34,6 +35,7 @@ public class LeaderBoard {
     private List<Entry<String, Double>> msAlemaari;
     private List<Entry<String, Double>> minchinaOtappa;
     private List<Entry<String, Double>> minchinaOtamma;
+    private Map<String, Integer> rideCountMap;
 
     private AthleteProfile athleteProfile;
 
@@ -203,6 +205,14 @@ public class LeaderBoard {
 
     public void setMinchinaOtamma(List<Entry<String, Double>> minchinaOtamma) {
         this.minchinaOtamma = minchinaOtamma;
+    }
+
+    public Map<String, Integer> getRideCountMap() {
+        return rideCountMap;
+    }
+
+    public void setRideCountMap(Map<String, Integer> rideCountMap) {
+        this.rideCountMap = rideCountMap;
     }
 
     public AthleteProfile getAthleteProfile() {

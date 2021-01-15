@@ -21,3 +21,9 @@ spring:
             authorizationUri: https://www.strava.com/api/v3/oauth/authorize?response_type=code
             user-info-uri: https://www.strava.com/api/v3/athlete
             user-name-attribute: id
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: hungryvelos
+

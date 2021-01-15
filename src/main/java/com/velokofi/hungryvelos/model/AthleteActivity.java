@@ -1,7 +1,12 @@
 package com.velokofi.hungryvelos.model;
 
-import java.io.Serializable;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+@Document
 public class AthleteActivity implements Serializable {
 
     /*
@@ -45,6 +50,7 @@ public class AthleteActivity implements Serializable {
 
     private String type;
 
+    @Id
     private long id;
 
     private String start_date;
@@ -165,6 +171,38 @@ public class AthleteActivity implements Serializable {
 
     public void setUtc_offset(double utc_offset) {
         this.utc_offset = utc_offset;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AthleteActivity activity = (AthleteActivity) o;
+        return this.getId() == activity.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("AthleteActivity{");
+        sb.append("athlete=").append(athlete);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", distance=").append(distance);
+        sb.append(", moving_time=").append(moving_time);
+        sb.append(", elapsed_time=").append(elapsed_time);
+        sb.append(", total_elevation_gain=").append(total_elevation_gain);
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", id=").append(id);
+        sb.append(", start_date='").append(start_date).append('\'');
+        sb.append(", start_date_local='").append(start_date_local).append('\'');
+        sb.append(", timezone='").append(timezone).append('\'');
+        sb.append(", utc_offset=").append(utc_offset);
+        sb.append('}');
+        return sb.toString();
     }
 
     public static final class Athlete implements Serializable {
