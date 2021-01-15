@@ -14,6 +14,7 @@ public class AthleteActivity implements Serializable {
         "distance": 254.4,
         "moving_time": 99,
         "elapsed_time": 184,
+        "average_speed": 6.679,
         "total_elevation_gain": 0.0,
         "type": "Ride",
         "workout_type": null,
@@ -37,6 +38,8 @@ public class AthleteActivity implements Serializable {
     private long moving_time;
 
     private long elapsed_time;
+
+    private double average_speed;
 
     private double total_elevation_gain;
 
@@ -98,6 +101,14 @@ public class AthleteActivity implements Serializable {
 
     public void setElapsed_time(long elapsed_time) {
         this.elapsed_time = elapsed_time;
+    }
+
+    public double getAverage_speed() {
+        return average_speed;
+    }
+
+    public void setAverage_speed(double average_speed) {
+        this.average_speed = average_speed;
     }
 
     public double getTotal_elevation_gain() {

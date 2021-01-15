@@ -39,6 +39,8 @@ public class ActivityUpdater {
                 final OAuth2AuthorizedClient client = PersistenceManager.retrieveClient(name);
                 final String tokenValue = client.getAccessToken().getTokenValue();
 
+                System.out.println("Fetching activities for client: " + client.getPrincipalName());
+
                 for (int page = 1; ; page++) {
                     final StringBuilder builder = new StringBuilder();
                     builder.append("https://www.strava.com/api/v3/athlete/activities");
@@ -57,7 +59,7 @@ public class ActivityUpdater {
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
                     if (activitiesResponse.getStatusCode().is4xxClientError()) {
                         System.out.println("Request failed for client: " + client.getPrincipalName() + " with status code: " + activitiesResponse.getStatusCode());
-                        System.out.println("Expires at is: " + client.getAccessToken().getExpiresAt() + ", Instanct.now() is: " + Instant.now());
+                        System.out.println("Expires at is: " + client.getAccessToken().getExpiresAt() + ", Instant.now() is: " + Instant.now());
                         refresh(client);
                     } else if (activitiesResponse.getStatusCode().is2xxSuccessful()) {
                         AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
@@ -74,6 +76,7 @@ public class ActivityUpdater {
     }
 
     public void refresh(final OAuth2AuthorizedClient client) {
+        System.out.println("Refreshing auth token for client: " + client.getPrincipalName());
         final ObjectMapper mapper = new ObjectMapper();
         try {
             final StringBuilder builder = new StringBuilder();

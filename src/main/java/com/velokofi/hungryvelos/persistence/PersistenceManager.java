@@ -24,10 +24,10 @@ public final class PersistenceManager {
                 deleteActivity(String.valueOf(activity.getId()));
             }
 
-            System.out.println("Creating new file: " + file.getAbsolutePath());
+            //System.out.println("Creating new file: " + file.getAbsolutePath());
             file.createNewFile();
 
-            System.out.println("Serializing activity onto file: " + file.getAbsolutePath());
+            //System.out.println("Serializing activity onto file: " + file.getAbsolutePath());
 
             final FileOutputStream fileOut = new FileOutputStream(file);
             final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -48,7 +48,7 @@ public final class PersistenceManager {
             for (final File file : files) {
                 try {
                     if (file.isFile()) {
-                        System.out.println("Deserializing activity from file: " + file.getName());
+                        //System.out.println("Deserializing activity from file: " + file.getName());
                         try (final FileInputStream fileIn = new FileInputStream(file);
                              final ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
                             final AthleteActivity activity = (AthleteActivity) objectIn.readObject();
@@ -76,10 +76,10 @@ public final class PersistenceManager {
                 deleteClient(client.getPrincipalName());
             }
 
-            System.out.println("Creating new file: " + file.getAbsolutePath());
+            //System.out.println("Creating new file: " + file.getAbsolutePath());
             file.createNewFile();
 
-            System.out.println("Serializing client onto file: " + file.getAbsolutePath());
+            //System.out.println("Serializing client onto file: " + file.getAbsolutePath());
 
             final FileOutputStream fileOut = new FileOutputStream(file);
             final ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -139,7 +139,7 @@ public final class PersistenceManager {
             for (final File file : files) {
                 try {
                     if (file.isFile()) {
-                        System.out.println("Deserializing client from file: " + file.getName());
+                        //System.out.println("Deserializing client from file: " + file.getName());
                         try (final FileInputStream fileIn = new FileInputStream(file);
                              final ObjectInputStream objectIn = new ObjectInputStream(fileIn)) {
                             final OAuth2AuthorizedClient client = (OAuth2AuthorizedClient) objectIn.readObject();
@@ -159,7 +159,7 @@ public final class PersistenceManager {
             final File dir = new File(getActivityFilePath());
             final File file = new File(dir, fileName);
             if (file.exists()) {
-                System.out.println("Deleting activity in file: " + file.getName());
+                //System.out.println("Deleting activity in file: " + file.getName());
                 file.delete();
             }
         } catch (final Exception e) {
@@ -172,7 +172,7 @@ public final class PersistenceManager {
             final File dir = new File(getClientFilePath());
             final File file = new File(dir, fileName);
             if (file.exists()) {
-                System.out.println("Deleting client in file: " + file.getName());
+                //System.out.println("Deleting client in file: " + file.getName());
                 file.delete();
             }
         } catch (final Exception e) {
