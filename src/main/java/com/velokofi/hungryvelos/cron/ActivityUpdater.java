@@ -3,11 +3,11 @@ package com.velokofi.hungryvelos.cron;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velokofi.hungryvelos.model.AthleteActivity;
-import com.velokofi.hungryvelos.model.AuthorizedClient;
+import com.velokofi.hungryvelos.model.OAuthorizedClient;
 import com.velokofi.hungryvelos.model.RefreshTokenRequest;
 import com.velokofi.hungryvelos.model.RefreshTokenResponse;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
-import com.velokofi.hungryvelos.persistence.AuthorizedClientRepository;
+import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -29,7 +29,7 @@ public class ActivityUpdater {
     private AthleteActivityRepository athleteActivityRepo;
 
     @Autowired
-    private AuthorizedClientRepository oAuthClientRepo;
+    private OAuthorizedClientRepository oAuthClientRepo;
 
     @Scheduled(fixedRate = 60 * 1000 * 15, initialDelay = 60 * 1000 * 5)
     public void run() {
@@ -40,12 +40,12 @@ public class ActivityUpdater {
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         oAuthClientRepo.findAll().stream().filter(
-                e -> AuthorizedClient.fromBytes(e.getBytes()).getAccessToken().getExpiresAt().isBefore(Instant.now())
+                e -> OAuthorizedClient.fromBytes(e.getBytes()).getAccessToken().getExpiresAt().isBefore(Instant.now())
         ).forEach(e -> oAuthClientRepo.save(e));
 
-        for (final AuthorizedClient client : oAuthClientRepo.findAll()) {
+        for (final OAuthorizedClient client : oAuthClientRepo.findAll()) {
             try {
-                final OAuth2AuthorizedClient entry = AuthorizedClient.fromBytes(client.getBytes());
+                final OAuth2AuthorizedClient entry = OAuthorizedClient.fromBytes(client.getBytes());
                 final String tokenValue = entry.getAccessToken().getTokenValue();
 
                 for (int page = 1; ; page++) {
@@ -84,8 +84,8 @@ public class ActivityUpdater {
         }
     }
 
-    public void refresh(final AuthorizedClient entry) {
-        final OAuth2AuthorizedClient client = AuthorizedClient.fromBytes(entry.getBytes());
+    public void refresh(final OAuthorizedClient entry) {
+        final OAuth2AuthorizedClient client = OAuthorizedClient.fromBytes(entry.getBytes());
         final ObjectMapper mapper = new ObjectMapper();
         try {
             final StringBuilder builder = new StringBuilder();
@@ -133,10 +133,10 @@ public class ActivityUpdater {
                     refreshToken
             );
 
-            final AuthorizedClient AuthorizedClient = new AuthorizedClient();
-            AuthorizedClient.setPrincipalName(client.getPrincipalName());
-            AuthorizedClient.setBytes(AuthorizedClient.toBytes(newClient));
-            oAuthClientRepo.save(AuthorizedClient);
+            final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
+            OAuthorizedClient.setPrincipalName(client.getPrincipalName());
+            OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(newClient));
+            oAuthClientRepo.save(OAuthorizedClient);
         } catch (final Exception e) {
             e.printStackTrace();
         }

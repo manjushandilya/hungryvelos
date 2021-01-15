@@ -2,9 +2,9 @@ package com.velokofi.hungryvelos.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velokofi.hungryvelos.model.AthleteActivity;
-import com.velokofi.hungryvelos.model.AuthorizedClient;
+import com.velokofi.hungryvelos.model.OAuthorizedClient;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
-import com.velokofi.hungryvelos.persistence.AuthorizedClientRepository;
+import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +19,7 @@ public class CacheController {
     private AthleteActivityRepository athleteActivityRepo;
 
     @Autowired
-    private AuthorizedClientRepository authorizedClientRepo;
+    private OAuthorizedClientRepository authorizedClientRepo;
 
     @GetMapping("/cache/activities")
     public String getActivities() throws Exception {
@@ -31,7 +31,7 @@ public class CacheController {
     @GetMapping("/cache/clients")
     public String getClients() throws Exception {
         final ObjectMapper mapper = new ObjectMapper();
-        final List<AuthorizedClient> clients = authorizedClientRepo.findAll();
+        final List<OAuthorizedClient> clients = authorizedClientRepo.findAll();
         return mapper.writeValueAsString(clients);
     }
 

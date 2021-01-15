@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.Objects;
 
 @Document
-public class AuthorizedClient {
+public class OAuthorizedClient {
 
     @Id
     private String principalName;
@@ -61,7 +61,7 @@ public class AuthorizedClient {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AuthorizedClient client = (AuthorizedClient) o;
+        OAuthorizedClient client = (OAuthorizedClient) o;
         return this.getPrincipalName() == client.getPrincipalName();
     }
 

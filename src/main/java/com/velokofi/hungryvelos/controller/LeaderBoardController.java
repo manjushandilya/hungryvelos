@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velokofi.hungryvelos.model.*;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
-import com.velokofi.hungryvelos.persistence.AuthorizedClientRepository;
+import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
 import com.velokofi.hungryvelos.persistence.TeamsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -44,7 +44,7 @@ public final class LeaderBoardController {
     private AthleteActivityRepository athleteActivityRepo;
 
     @Autowired
-    private AuthorizedClientRepository authorizedClientRepo;
+    private OAuthorizedClientRepository authorizedClientRepo;
 
     public LeaderBoardController(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -55,10 +55,10 @@ public final class LeaderBoardController {
     public ModelAndView leaderboard(@RegisteredOAuth2AuthorizedClient final OAuth2AuthorizedClient client,
                                     @RequestParam(required = false, defaultValue = "false") boolean debug) throws Exception {
 
-        final AuthorizedClient authorizedClient = new AuthorizedClient();
-        authorizedClient.setPrincipalName(client.getPrincipalName());
-        authorizedClient.setBytes(authorizedClient.toBytes(client));
-        authorizedClientRepo.save(authorizedClient);
+        final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
+        OAuthorizedClient.setPrincipalName(client.getPrincipalName());
+        OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));
+        authorizedClientRepo.save(OAuthorizedClient);
 
         final LeaderBoard leaderBoard = new LeaderBoard();
         final ObjectMapper mapper = new ObjectMapper();
