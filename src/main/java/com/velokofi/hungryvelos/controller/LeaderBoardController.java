@@ -34,7 +34,7 @@ import static java.util.stream.Collectors.*;
 @RestController
 public final class LeaderBoardController {
 
-    public enum MetricType {DISTANCE, ELEVATION, SPEED}
+    public enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
 
     private final TeamsRepository teamsRepository;
 
@@ -194,13 +194,8 @@ public final class LeaderBoardController {
         leaderBoard.setBettappa(summingAggregateDouble(activities, teams, "M", MetricType.ELEVATION));
         leaderBoard.setBettamma(summingAggregateDouble(activities, teams, "F", MetricType.ELEVATION));
 
-        final List<Entry<String, Double>> motap = averagingAggregateDouble(activities, teams, "M", MetricType.SPEED);
-        leaderBoard.setMinchinaOtappa(motap);
-        System.out.println("Minchina Otappa: " + motap);
-
-        final List<Entry<String, Double>> motam = averagingAggregateDouble(activities, teams, "F", MetricType.SPEED);
-        leaderBoard.setMinchinaOtamma(motam);
-        System.out.println("Minchina Otamma: " + motam);
+        leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teams, "M", MetricType.AVG_SPEED));
+        leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teams, "F", MetricType.AVG_SPEED));
 
         leaderBoard.setMrPanchaanga(summingAggregateInteger(activities, teams, "M"));
         leaderBoard.setMsPanchaanga(summingAggregateInteger(activities, teams, "F"));
@@ -248,7 +243,7 @@ public final class LeaderBoardController {
                 .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
                 .collect(groupingBy(
                         a -> getNameFromId(a.getAthlete().getId(), teams),
-                        averagingDouble(a -> round(getValue(metricType, a))))
+                        averagingDouble(a -> getValue(metricType, a)))
                 );
 
         final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
