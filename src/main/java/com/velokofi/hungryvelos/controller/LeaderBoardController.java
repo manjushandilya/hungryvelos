@@ -166,13 +166,6 @@ public final class LeaderBoardController {
             //System.out.println("teamAvgElevationMap: " + teamAvgElevationMap);
             leaderBoard.setTeamAvgElevationMap(teamAvgElevationMap);
 
-            // Calculate athlete rides
-            final Map<String, Integer> athleteRidesMap = activities.stream().collect(
-                    groupingBy(a -> getNameFromId(a.getAthlete().getId(), teams), summingInt(a -> 1))
-            );
-            System.out.println("athleteRidesMap: " + athleteRidesMap);
-            leaderBoard.setRideCountMap(athleteRidesMap);
-
             // Calculate athlete ride count
             final Map<Long, Double> athleteRideCountMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> 1D))
@@ -204,6 +197,9 @@ public final class LeaderBoardController {
         leaderBoard.setMinchinaOtappa(aggregate(activities, teams, "M", MetricType.SPEED));
         leaderBoard.setMinchinaOtamma(aggregate(activities, teams, "F", MetricType.SPEED));
 
+        leaderBoard.setMrPanchaanga(aggregateInt(activities, teams, "M"));
+        leaderBoard.setMsPanchaanga(aggregateInt(activities, teams, "F"));
+
         final ModelAndView mav = new ModelAndView("index");
         mav.addObject("leaderBoard", leaderBoard);
         mav.addObject("principalName", client.getPrincipalName());
@@ -231,11 +227,25 @@ public final class LeaderBoardController {
         final Map<String, Double> aggregateMap = activities.stream()
                 .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
                 .collect(groupingBy(
-                        a -> teamsRepository.getNameForId(a.getAthlete().getId()),
+                        a -> getNameFromId(a.getAthlete().getId(), teams),
                         summingDouble(a -> round(getValue(metricType, a))))
                 );
 
         final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
+        return aggregateSorted.collect(toList());
+    }
+
+    private List<Entry<String, Integer>> aggregateInt(final List<AthleteActivity> activities,
+                                                  final List<Team> teams,
+                                                  final String gender) {
+        final Map<String, Integer> aggregateMap = activities.stream()
+                .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
+                .collect(groupingBy(
+                        a -> getNameFromId(a.getAthlete().getId(), teams),
+                        summingInt(a -> 1))
+                );
+
+        final Stream<Entry<String, Integer>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
         return aggregateSorted.collect(toList());
     }
 

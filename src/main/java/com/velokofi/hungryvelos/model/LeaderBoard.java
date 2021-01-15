@@ -35,7 +35,8 @@ public class LeaderBoard {
     private List<Entry<String, Double>> msAlemaari;
     private List<Entry<String, Double>> minchinaOtappa;
     private List<Entry<String, Double>> minchinaOtamma;
-    private Map<String, Integer> rideCountMap;
+    private List<Entry<String, Integer>> mrPanchaanga;
+    private List<Entry<String, Integer>> msPanchaanga;
 
     private AthleteProfile athleteProfile;
 
@@ -207,12 +208,20 @@ public class LeaderBoard {
         this.minchinaOtamma = minchinaOtamma;
     }
 
-    public Map<String, Integer> getRideCountMap() {
-        return rideCountMap;
+    public List<Entry<String, Integer>> getMrPanchaanga() {
+        return mrPanchaanga;
     }
 
-    public void setRideCountMap(Map<String, Integer> rideCountMap) {
-        this.rideCountMap = rideCountMap;
+    public void setMrPanchaanga(List<Entry<String, Integer>> mrPanchaanga) {
+        this.mrPanchaanga = mrPanchaanga;
+    }
+
+    public List<Entry<String, Integer>> getMsPanchaanga() {
+        return msPanchaanga;
+    }
+
+    public void setMsPanchaanga(List<Entry<String, Integer>> msPanchaanga) {
+        this.msPanchaanga = msPanchaanga;
     }
 
     public AthleteProfile getAthleteProfile() {
@@ -222,4 +231,5 @@ public class LeaderBoard {
     public void setAthleteProfile(AthleteProfile athleteProfile) {
         this.athleteProfile = athleteProfile;
     }
+
 }
