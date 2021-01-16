@@ -55,6 +55,12 @@ public final class LeaderBoardController {
     public ModelAndView leaderboard(@RegisteredOAuth2AuthorizedClient final OAuth2AuthorizedClient client,
                                     @RequestParam(required = false, defaultValue = "false") boolean debug) throws Exception {
 
+        final List<Team> teams = teamsRepository.listTeams();
+        final Set<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toSet());
+        final Optional<TeamMember> teamMemberLogin = teamMembers.stream().filter(tm -> String.valueOf(tm.getId()).equals(client.getPrincipalName())).findFirst();
+
+        System.out.println("Team member logged in? " + teamMemberLogin.isPresent());
+
         final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
         OAuthorizedClient.setPrincipalName(client.getPrincipalName());
         OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));
@@ -72,34 +78,34 @@ public final class LeaderBoardController {
 
         leaderBoard.setAthleteProfile(athleteProfile);
 
-        for (int page = 1; ; page++) {
-            final StringBuilder url = new StringBuilder();
-            url.append("https://www.strava.com/api/v3/athlete/activities");
-            url.append("?per_page=200");
-            url.append("&after=").append("1609631999"); // Start of 3 Jan 2021
-            url.append("&page=").append(page);
+        if (teamMemberLogin.isPresent()) {
+            for (int page = 1; ; page++) {
+                final StringBuilder url = new StringBuilder();
+                url.append("https://www.strava.com/api/v3/athlete/activities");
+                url.append("?per_page=200");
+                url.append("&after=").append("1609631999"); // Start of 3 Jan 2021
+                url.append("&page=").append(page);
 
-            if (debug) {
-                System.out.println("Hitting url: " + url);
-            }
+                if (debug) {
+                    System.out.println("Hitting url: " + url);
+                }
 
-            final String activitiesResponse = getResponse(tokenValue, url.toString());
+                final String activitiesResponse = getResponse(tokenValue, url.toString());
 
-            if (debug) {
-                System.out.println(activitiesResponse);
-            }
+                if (debug) {
+                    System.out.println(activitiesResponse);
+                }
 
-            final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
-            Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
+                Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
 
-            if (activitiesArray.length < 200) {
-                break;
+                if (activitiesArray.length < 200) {
+                    break;
+                }
             }
         }
 
         final List<AthleteActivity> activities = athleteActivityRepo.findAll();
-
-        final List<Team> teams = teamsRepository.listTeams();
         { // event totals
             final Double totalDistance = round(activities.stream().collect(summingDouble(a -> a.getDistance())) / 1000);
 
