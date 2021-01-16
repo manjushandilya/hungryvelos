@@ -224,6 +224,16 @@ public class AthleteActivity implements Serializable {
         public void setResource_state(int resource_state) {
             this.resource_state = resource_state;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("Athlete{");
+            sb.append("id=").append(id);
+            sb.append('}');
+            return sb.toString();
+        }
     }
+
+
 
 }

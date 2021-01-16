@@ -36,9 +36,11 @@
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <h1 class="h5 mb-0 text-gray-800">Hungry Velos</h1>
-                </form>
+                <div class="jumbotron">
+                    <h1>Hungry Velos</h1>
+                    <p>The hungry velos challenge is a friendly, one month cycling challenge by velokofi,
+                        a group of cycling enthusiasts. Here are some statistics:</p>
+                </div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -334,7 +336,7 @@
                     </div>
                 </div>
 
-                <!-- Content Row - Minchina Otamma and Minchina Otappa -->
+                <!-- Content Row - Minchina Ota and Panchaanga -->
                 <div class="row">
 
                     <!-- Area Chart -->
@@ -343,12 +345,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Minchina Otamma</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota and Panchaanga - Female</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtammaChart"></canvas>
+                                    <canvas id="minchinaOtammaAndMsPanchaangaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -360,50 +362,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Michina Otappa</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Michina Ota and Panchanga - Male</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtappaChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Content Row - Mr and Ms Panchaanga -->
-                <div class="row">
-
-                    <!-- Area Chart -->
-                    <div class="col-xl-6 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Ms Panchaanga</h6>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="msPanchaangaChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Area Chart -->
-                    <div class="col-xl-6 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Mr Panchaanga</h6>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="mrPanchaangaChart"></canvas>
+                                    <canvas id="minchinaOtappaAndMrPanchaangaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -664,7 +628,7 @@
         }]
     };
 
-    var minchinaOtammaChartConfig = {
+    var minchinaOtammaAndMsPanchaangaChartConfig = {
         labels: [
             /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
                 "[(${minchinaOtamma.key})]"[(${iterStat.last ? '' : ','})]
@@ -681,10 +645,21 @@
                 /*[/]*/
             ],
             yAxisID: 'y-axis-1',
+        }, {
+            label: 'Rides',
+            borderColor: 'rgb(54, 162, 235)',
+            backgroundColor: 'rgb(54, 162, 235)',
+            fill: false,
+            data: [
+                /*[# th:each="msPanchaanga, iterStat: ${leaderBoard.msPanchaanga}"]*/
+                    [(${msPanchaanga.value})][(${iterStat.last ? '' : ','})]
+                /*[/]*/
+            ],
+            yAxisID: 'y-axis-2'
         }]
     };
 
-    var minchinaOtappaChartConfig = {
+    var minchinaOtappaAndMrPanchaangaChartConfig = {
         labels: [
             /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
                 "[(${minchinaOtappa.key})]"[(${iterStat.last ? '' : ','})]
@@ -701,47 +676,18 @@
                 /*[/]*/
             ],
             yAxisID: 'y-axis-1',
-        }]
-    };
-
-    var msPanchaangaChartConfig = {
-        labels: [
-            /*[# th:each="msPanchaanga, iterStat: ${leaderBoard.msPanchaanga}"]*/
-                "[(${msPanchaanga.key})]"[(${iterStat.last ? '' : ','})]
-            /*[/]*/
-        ],
-        datasets: [{
+        }, {
             label: 'Rides',
-            borderColor: 'rgb(255, 132, 99)',
-            backgroundColor: 'rgb(255, 132, 99)',
-            fill: false,
-            data: [
-                /*[# th:each="msPanchaanga, iterStat: ${leaderBoard.msPanchaanga}"]*/
-                    [(${msPanchaanga.value})][(${iterStat.last ? '' : ','})]
-                /*[/]*/
-            ],
-            yAxisID: 'y-axis-1',
-        }]
-    };
-
-    var mrPanchaangaChartConfig = {
-        labels: [
-            /*[# th:each="mrPanchaanga, iterStat: ${leaderBoard.mrPanchaanga}"]*/
-                "[(${mrPanchaanga.key})]"[(${iterStat.last ? '' : ','})]
-            /*[/]*/
-        ],
-        datasets: [{
-            label: 'Rides',
-            borderColor: 'rgb(255, 132, 99)',
-            backgroundColor: 'rgb(255, 132, 99)',
+            borderColor: 'rgb(54, 162, 235)',
+            backgroundColor: 'rgb(54, 162, 235)',
             fill: false,
             data: [
                 /*[# th:each="mrPanchaanga, iterStat: ${leaderBoard.mrPanchaanga}"]*/
                     [(${mrPanchaanga.value})][(${iterStat.last ? '' : ','})]
                 /*[/]*/
             ],
-            yAxisID: 'y-axis-1',
-        }]
+            yAxisID: 'y-axis-2'
+        }]]
     };
 
     window.onload = function() {
@@ -863,9 +809,9 @@
             }
         });
 
-        var ctx9 = document.getElementById('minchinaOtammaChart').getContext('2d');
+        var ctx9 = document.getElementById('minchinaOtammaAndMsPanchaangaChart').getContext('2d');
         window.myLine = Chart.Line(ctx9, {
-            data: minchinaOtammaChartConfig,
+            data: minchinaOtammaAndMsPanchaangaChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -892,67 +838,9 @@
             }
         });
 
-        var ctx10 = document.getElementById('minchinaOtappaChart').getContext('2d');
+        var ctx10 = document.getElementById('minchinaOtappaAndMrPanchaangaChart').getContext('2d');
         window.myLine = Chart.Line(ctx10, {
-            data: minchinaOtappaChartConfig,
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                hoverMode: 'index',
-                stacked: false,
-                scales: {
-                    yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
-                    }],
-                }
-            }
-        });
-
-        var ctx11 = document.getElementById('msPanchaangaChart').getContext('2d');
-        window.myLine = Chart.Line(ctx11, {
-            data: msPanchaangaChartConfig,
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                hoverMode: 'index',
-                stacked: false,
-                scales: {
-                    yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
-                    }],
-                }
-            }
-        });
-
-        var ctx12 = document.getElementById('mrPanchaangaChart').getContext('2d');
-        window.myLine = Chart.Line(ctx12, {
-            data: mrPanchaangaChartConfig,
+            data: minchinaOtappaAndMrPanchaangaChart,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
