@@ -221,7 +221,8 @@ public final class LeaderBoardController {
     private long getTeamMemberCount(final String teamName, final List<Team> teams) {
         final Optional<Team> optional = teams.stream().filter(t -> t.getName().equals(teamName)).findFirst();
         if (optional.isPresent()) {
-            return optional.get().getMembers().size();
+            final Team team = optional.get(); // exceptional handling for injured team member!
+            return team.getId() == 2 ? team.getMembers().size() - 1 : team.getMembers().size();
         }
         return 0;
     }
