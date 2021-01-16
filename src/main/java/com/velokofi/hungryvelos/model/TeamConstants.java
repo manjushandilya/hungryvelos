@@ -2,8 +2,6 @@ package com.velokofi.hungryvelos.model;
 
 public interface TeamConstants {
 
-    int INDIVIDUAL_TARGET = 250;
-
     String TEAMS_CSV = """
             team_id, name, captain_strava_id
             1, In it to spin it, 61999014
@@ -26,6 +24,7 @@ public interface TeamConstants {
             12920635, Sukumar Sundaram, M, 2, false
             35940578, Sai Srinivas, M, 2, false
             38148750, Chandrakanth K, M, 2, false
+            75500724, revathi mp, F, 2, false
             64907699, amarnath vali, M, 2, false
             9125629, Deepu Scorpio, M, 2, false
             74963850, Nandini Kishor, F, 2, false
