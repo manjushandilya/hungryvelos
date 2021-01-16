@@ -63,11 +63,11 @@ public final class ActivityUpdater {
                     System.out.println("Trying to fetch activities with pageNumber: " + pageNumber);
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
                     final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
-                    if (activitiesArray.length < 1) {
-                        System.out.println("No activities found, breaking the loop");
+                    if (activitiesArray.length < 200) {
+                        System.out.println("Less than 200 (pageSize) activities found, breaking the loop...");
                         break;
                     } else {
-                        System.out.println("Found, breaking the loop");
+                        System.out.println("Saving " + activitiesArray.length + " activities to db");
                     }
                     Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
                     pageNumber++;
