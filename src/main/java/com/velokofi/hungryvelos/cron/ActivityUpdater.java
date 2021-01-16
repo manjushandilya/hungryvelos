@@ -18,12 +18,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.*;
+
 @Component
-public class ActivityUpdater {
+public final class ActivityUpdater {
 
     @Autowired
     private AthleteActivityRepository athleteActivityRepo;
@@ -32,60 +38,56 @@ public class ActivityUpdater {
     private OAuthorizedClientRepository oAuthClientRepo;
 
     @Scheduled(fixedRate = 60 * 1000 * 15, initialDelay = 60 * 1000 * 5)
-    public void run() {
+    public void run() throws Exception {
         System.out.println("Running scheduled task at: " + LocalDateTime.now());
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        oAuthClientRepo.findAll().stream().filter(
-                e -> OAuthorizedClient.fromBytes(e.getBytes()).getAccessToken().getExpiresAt().isBefore(Instant.now())
-        ).forEach(e -> oAuthClientRepo.save(e));
+        final List<OAuthorizedClient> clients = oAuthClientRepo.findAll();
+        final List<String> clientIds = clients.stream().map(c -> c.getPrincipalName()).collect(toList());
 
-        for (final OAuthorizedClient client : oAuthClientRepo.findAll()) {
-            try {
-                final OAuth2AuthorizedClient entry = OAuthorizedClient.fromBytes(client.getBytes());
-                final String tokenValue = entry.getAccessToken().getTokenValue();
+        for (final String clientId : clientIds) {
+            System.out.println("Fetching activities for client with id: " + clientId);
+            int pageNumber = 1;
+            for (int retries = 0; retries < 10; retries++) {
+                final URI uri = getUri(pageNumber);
+                final RestTemplate restTemplate = new RestTemplate();
+                final HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.set("Authorization", "Bearer " + getTokenValue(clientId));
+                final HttpEntity<String> request = new HttpEntity<String>(headers);
 
-                for (int page = 1; ; page++) {
-                    final StringBuilder builder = new StringBuilder();
-                    builder.append("https://www.strava.com/api/v3/athlete/activities");
-                    builder.append("?per_page=200");
-                    builder.append("&after=").append("1609631999"); // Start of 3 Jan 2021
-                    builder.append("&page=").append(page);
-
-                    URI uri = new URI(builder.toString());
-
-                    final RestTemplate restTemplate = new RestTemplate();
-                    final HttpHeaders headers = new HttpHeaders();
-                    headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.set("Authorization", "Bearer " + tokenValue);
-                    final HttpEntity<String> request = new HttpEntity<String>(headers);
-
+                try {
+                    System.out.println("Trying to fetch activities with pageNumber: " + pageNumber);
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
-                    if (activitiesResponse.getStatusCode().is4xxClientError()) {
-                        System.out.println("Request failed for client: " + client.getPrincipalName() + " with status code: " + activitiesResponse.getStatusCode());
-                        System.out.println("Expires at is: " + entry.getAccessToken().getExpiresAt() + ", Instant.now() is: " + Instant.now());
-                        refresh(client);
-                    } else if (activitiesResponse.getStatusCode().is2xxSuccessful()) {
-                        AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
-                        if (activitiesArray.length < 1) {
-                            break;
-                        }
-                        Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
-                    } else {
+                    final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
+                    if (activitiesArray.length < 1) {
+                        System.out.println("No activities found, breaking the loop");
                         break;
+                    } else {
+                        System.out.println("Found, breaking the loop");
                     }
+                    Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                    pageNumber++;
+                } catch (final Exception e) {
+                    System.out.println("Request failed with message: " + e.getMessage());
+                    System.out.println("Refreshing auth token, old value: " + getTokenValue(clientId));
+
+                    refresh(clientId);
+
+                    System.out.println("New value: " + getTokenValue(clientId));
                 }
-            } catch (final Exception e) {
-                e.printStackTrace();
+                System.out.println("zZzZzZz ing for 5 seconds...");
+                Thread.sleep(5000);
             }
         }
     }
 
-    public void refresh(final OAuthorizedClient entry) {
-        final OAuth2AuthorizedClient client = OAuthorizedClient.fromBytes(entry.getBytes());
+    public void refresh(final String clientId) {
+        final OAuthorizedClient client = oAuthClientRepo.findById(clientId).get();
+        final OAuth2AuthorizedClient authorizedClient = OAuthorizedClient.fromBytes(client.getBytes());
         final ObjectMapper mapper = new ObjectMapper();
         try {
             final StringBuilder builder = new StringBuilder();
@@ -98,21 +100,21 @@ public class ActivityUpdater {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             final RefreshTokenRequest requestObj = new RefreshTokenRequest();
-            requestObj.setClient_id(client.getClientRegistration().getClientId());
-            requestObj.setClient_secret(client.getClientRegistration().getClientSecret());
+            requestObj.setClient_id(authorizedClient.getClientRegistration().getClientId());
+            requestObj.setClient_secret(authorizedClient.getClientRegistration().getClientSecret());
             requestObj.setGrant_type("refresh_token");
-            requestObj.setRefresh_token(client.getRefreshToken().getTokenValue());
+            requestObj.setRefresh_token(authorizedClient.getRefreshToken().getTokenValue());
             final String body = mapper.writeValueAsString(requestObj);
 
-            //System.out.println("Refresh token request: " + body);
+            System.out.println("Refresh token request: " + body);
 
             final HttpEntity<String> request = new HttpEntity<String>(body, headers);
 
             final ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.POST, request, String.class);
-            //System.out.println("Refresh token response: " + response);
+            System.out.println("Refresh token response: " + response);
 
             final RefreshTokenResponse refreshTokenResponse = mapper.readValue(response.getBody(), RefreshTokenResponse.class);
-            oAuthClientRepo.deleteById(client.getPrincipalName());
+            oAuthClientRepo.deleteById(authorizedClient.getPrincipalName());
 
             final OAuth2AccessToken accessToken = new OAuth2AccessToken(
                     OAuth2AccessToken.TokenType.BEARER,
@@ -127,19 +129,36 @@ public class ActivityUpdater {
             );
 
             final OAuth2AuthorizedClient newClient = new OAuth2AuthorizedClient(
-                    client.getClientRegistration(),
-                    client.getPrincipalName(),
+                    authorizedClient.getClientRegistration(),
+                    authorizedClient.getPrincipalName(),
                     accessToken,
                     refreshToken
             );
 
             final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
-            OAuthorizedClient.setPrincipalName(client.getPrincipalName());
-            OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(newClient));
+            OAuthorizedClient.setPrincipalName(authorizedClient.getPrincipalName());
+            OAuthorizedClient.setBytes(com.velokofi.hungryvelos.model.OAuthorizedClient.toBytes(newClient));
             oAuthClientRepo.save(OAuthorizedClient);
         } catch (final Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private URI getUri(final int pageNumber) throws URISyntaxException {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("https://www.strava.com/api/v3/athlete/activities");
+        builder.append("?per_page=200");
+        builder.append("&after=").append("1609631999"); // Start of 3 Jan 2021
+        builder.append("&page=").append(pageNumber);
+
+        return new URI(builder.toString());
+    }
+
+    private String getTokenValue(final String clientId) {
+        final OAuthorizedClient client = oAuthClientRepo.findById(clientId).get();
+        final OAuth2AuthorizedClient entry = OAuthorizedClient.fromBytes(client.getBytes());
+        final String tokenValue = entry.getAccessToken().getTokenValue();
+        return tokenValue;
     }
 
 }
