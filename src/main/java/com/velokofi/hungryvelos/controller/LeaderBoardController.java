@@ -34,11 +34,12 @@ import static java.util.stream.Collectors.*;
 @RestController
 public final class LeaderBoardController {
 
-    public enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
-
-    private final TeamsRepository teamsRepository;
+    private enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
 
     private final RestTemplate restTemplate;
+
+    @Autowired
+    private TeamsRepository teamsRepository;
 
     @Autowired
     private AthleteActivityRepository athleteActivityRepo;
@@ -48,7 +49,6 @@ public final class LeaderBoardController {
 
     public LeaderBoardController(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.teamsRepository = new TeamsRepository();
     }
 
     @GetMapping("/")

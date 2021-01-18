@@ -5,12 +5,14 @@ import com.opencsv.CSVReaderBuilder;
 import com.velokofi.hungryvelos.model.Team;
 import com.velokofi.hungryvelos.model.TeamConstants;
 import com.velokofi.hungryvelos.model.TeamMember;
+import org.springframework.stereotype.Component;
 
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class TeamsRepository implements TeamConstants {
 
     public List<Team> listTeams() throws Exception {
