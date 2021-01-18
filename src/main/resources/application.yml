@@ -1,6 +1,13 @@
 server:
   port: "${port:8080}"
 
+management:
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+
 spring:   
   security:
     oauth2:

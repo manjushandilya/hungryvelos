@@ -23,7 +23,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .oauth2Login();
+                .oauth2Login()
+                .and()
+                .rememberMe().key("hungryvelos");
     }
 
     @Bean

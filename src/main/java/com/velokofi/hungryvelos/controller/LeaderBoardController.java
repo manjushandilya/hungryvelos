@@ -203,8 +203,8 @@ public final class LeaderBoardController {
         leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teams, "M", MetricType.AVG_SPEED));
         leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teams, "F", MetricType.AVG_SPEED));
 
-        leaderBoard.setMrPanchaanga(summingAggregateInteger(activities, teams, "M"));
-        leaderBoard.setMsPanchaanga(summingAggregateInteger(activities, teams, "F"));
+        leaderBoard.setMrThulimaga(summingAggregateInteger(activities, teams, "M"));
+        leaderBoard.setMsThulimaga(summingAggregateInteger(activities, teams, "F"));
 
         final ModelAndView mav = new ModelAndView("index");
         mav.addObject("leaderBoard", leaderBoard);

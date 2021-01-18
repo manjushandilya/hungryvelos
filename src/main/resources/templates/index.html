@@ -332,7 +332,7 @@
                     </div>
                 </div>
 
-                <!-- Content Row - Minchina Ota and Panchaanga -->
+                <!-- Content Row - Minchina Ota and Thulimaga -->
                 <div class="row">
 
                     <!-- Area Chart -->
@@ -341,12 +341,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota and Panchaanga - Female</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota and Thulimaga - Female</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtammaAndMsPanchaangaChart"></canvas>
+                                    <canvas id="minchinaOtammaAndMsThulimagaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -358,12 +358,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Michina Ota and Panchaanga - Male</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Michina Ota and Thulimaga - Male</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtappaAndMrPanchaangaChart"></canvas>
+                                    <canvas id="minchinaOtappaAndMrThulimagaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -624,7 +624,7 @@
         }]
     };
 
-    var minchinaOtammaAndMsPanchaangaChartConfig = {
+    var minchinaOtammaAndMsThulimagaChartConfig = {
         labels: [
             /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
                 "[(${minchinaOtamma.key})]"[(${iterStat.last ? '' : ','})]
@@ -647,15 +647,15 @@
             backgroundColor: 'rgb(54, 162, 235)',
             fill: false,
             data: [
-                /*[# th:each="msPanchaanga, iterStat: ${leaderBoard.msPanchaanga}"]*/
-                    [(${msPanchaanga.value})][(${iterStat.last ? '' : ','})]
+                /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
+                    [(${msThulimaga.value})][(${iterStat.last ? '' : ','})]
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
         }]
     };
 
-    var minchinaOtappaAndMrPanchaangaChartConfig = {
+    var minchinaOtappaAndMrThulimagaChartConfig = {
         labels: [
             /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
                 "[(${minchinaOtappa.key})]"[(${iterStat.last ? '' : ','})]
@@ -678,8 +678,8 @@
             backgroundColor: 'rgb(54, 162, 235)',
             fill: false,
             data: [
-                /*[# th:each="mrPanchaanga, iterStat: ${leaderBoard.mrPanchaanga}"]*/
-                    [(${mrPanchaanga.value})][(${iterStat.last ? '' : ','})]
+                /*[# th:each="mrThulimaga, iterStat: ${leaderBoard.mrThulimaga}"]*/
+                    [(${mrThulimaga.value})][(${iterStat.last ? '' : ','})]
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -805,9 +805,9 @@
             }
         });
 
-        var ctx9 = document.getElementById('minchinaOtammaAndMsPanchaangaChart').getContext('2d');
+        var ctx9 = document.getElementById('minchinaOtammaAndMsThulimagaChart').getContext('2d');
         window.myLine = Chart.Line(ctx9, {
-            data: minchinaOtammaAndMsPanchaangaChartConfig,
+            data: minchinaOtammaAndMsThulimagaChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -834,9 +834,9 @@
             }
         });
 
-        var ctx10 = document.getElementById('minchinaOtappaAndMrPanchaangaChart').getContext('2d');
+        var ctx10 = document.getElementById('minchinaOtappaAndMrThulimagaChart').getContext('2d');
         window.myLine = Chart.Line(ctx10, {
-            data: minchinaOtappaAndMrPanchaangaChartConfig,
+            data: minchinaOtappaAndMrThulimagaChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,

@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -34,9 +35,9 @@ public final class ActivityUpdater {
     @Autowired
     private OAuthorizedClientRepository oAuthClientRepo;
 
-    @Scheduled(fixedRate = 60 * 1000 * 15, initialDelay = 60 * 1000 * 5)
+    @Scheduled(fixedDelay = 60 * 1000 * 60, initialDelay = 60 * 1000 * 5)
     public void run() throws Exception {
-        //System.out.println("Running scheduled task at: " + LocalDateTime.now());
+        System.out.println("Running scheduled task at: " + LocalDateTime.now());
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
@@ -77,7 +78,11 @@ public final class ActivityUpdater {
                     //System.out.println("New value: " + getTokenValue(clientId));
                 }
                 //System.out.println("zZzZzZz ing for 5 seconds...");
-                Thread.sleep(5000);
+                try {
+                    Thread.sleep(5000);
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
