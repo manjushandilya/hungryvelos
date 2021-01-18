@@ -78,7 +78,7 @@ public final class LeaderBoardController {
 
         leaderBoard.setAthleteProfile(athleteProfile);
 
-        if (teamMemberLogin.isPresent()) {
+        if (teamMemberLogin.isPresent() && Boolean.getBoolean("hungryvelos.fetch.activity.on.login")) {
             for (int page = 1; ; page++) {
                 final StringBuilder url = new StringBuilder();
                 url.append("https://www.strava.com/api/v3/athlete/activities");
