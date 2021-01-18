@@ -61,11 +61,6 @@ public final class LeaderBoardController {
 
         System.out.println("Team member logged in? " + teamMemberLogin.isPresent());
 
-        final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
-        OAuthorizedClient.setPrincipalName(client.getPrincipalName());
-        OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));
-        authorizedClientRepo.save(OAuthorizedClient);
-
         final LeaderBoard leaderBoard = new LeaderBoard();
         final ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
@@ -77,6 +72,13 @@ public final class LeaderBoardController {
         final AthleteProfile athleteProfile = mapper.readValue(profileResponse, AthleteProfile.class);
 
         leaderBoard.setAthleteProfile(athleteProfile);
+
+        if (teamMemberLogin.isPresent() && Boolean.getBoolean("hungryvelos.fetch.profile.on.login")) {
+            final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
+            OAuthorizedClient.setPrincipalName(client.getPrincipalName());
+            OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));
+            authorizedClientRepo.save(OAuthorizedClient);
+        }
 
         if (teamMemberLogin.isPresent() && Boolean.getBoolean("hungryvelos.fetch.activity.on.login")) {
             for (int page = 1; ; page++) {
