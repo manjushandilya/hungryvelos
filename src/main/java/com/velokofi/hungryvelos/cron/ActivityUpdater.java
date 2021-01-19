@@ -48,7 +48,7 @@ public final class ActivityUpdater {
         final List<String> clientIds = clients.stream().map(c -> c.getPrincipalName()).collect(toList());
 
         for (final String clientId : clientIds) {
-            //System.out.println("Fetching activities for client with id: " + clientId);
+            System.out.println("Fetching activities for client with id: " + clientId);
             int pageNumber = 1;
             for (int retries = 0; retries < 10; retries++) {
                 final URI uri = getUri(pageNumber);
@@ -59,11 +59,11 @@ public final class ActivityUpdater {
                 final HttpEntity<String> request = new HttpEntity<String>(headers);
 
                 try {
-                    //System.out.println("Trying to fetch activities with pageNumber: " + pageNumber);
+                    System.out.println("Trying to fetch activities with pageNumber: " + pageNumber);
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
                     final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
                     if (activitiesArray.length < 200) {
-                        //System.out.println("Less than 200 (pageSize) activities found, breaking the loop...");
+                        System.out.println("Less than 200 (pageSize) activities found, breaking the loop...");
                         break;
                     } else {
                         System.out.println("Saving " + activitiesArray.length + " activities to db");
@@ -81,7 +81,7 @@ public final class ActivityUpdater {
 
                     System.out.println("New value: " + getTokenValue(clientId));
                 }
-                //System.out.println("zZzZzZz ing for 5 seconds...");
+                System.out.println("zZzZzZz ing for 5 seconds...");
                 try {
                     Thread.sleep(5000);
                 } catch (final Exception e) {
