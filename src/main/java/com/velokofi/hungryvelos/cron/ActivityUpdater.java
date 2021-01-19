@@ -8,6 +8,7 @@ import com.velokofi.hungryvelos.model.RefreshTokenRequest;
 import com.velokofi.hungryvelos.model.RefreshTokenResponse;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
 import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
+import com.velokofi.hungryvelos.persistence.Saver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -64,6 +65,9 @@ public final class ActivityUpdater {
                     if (activitiesArray.length > 0) {
                         System.out.println("Saving " + activitiesArray.length + " activities to db");
                         Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+
+                        System.out.println("Saving " + activitiesArray.length + " activities to file");
+                        Saver.persistActivities(clientId,activitiesResponse.getBody());
                     }
 
                     if (activitiesArray.length < 200) {
