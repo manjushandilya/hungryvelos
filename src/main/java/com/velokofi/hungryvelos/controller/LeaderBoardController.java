@@ -19,11 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -252,7 +249,7 @@ public final class LeaderBoardController {
                 .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
                 .collect(groupingBy(
                         a -> getNameFromId(a.getAthlete().getId(), teams),
-                        averagingDouble(a -> getValue(metricType, a)))
+                        averagingDouble(a -> getValue(metricType, a) * 3.6))
                 );
 
         final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
@@ -262,14 +259,25 @@ public final class LeaderBoardController {
     private List<Entry<String, Integer>> summingAggregateInteger(final List<AthleteActivity> activities,
                                                                  final List<Team> teams,
                                                                  final String gender) {
-        final Map<String, Integer> aggregateMap = activities.stream()
-                .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
-                .collect(groupingBy(
-                        a -> getNameFromId(a.getAthlete().getId(), teams),
-                        summingInt(a -> 1))
-                );
+        final Set<TeamMember> teamMembers = teams.stream().flatMap(team -> team.getMembers().stream()).collect(toSet());
+        final Map<String, Integer> map = new HashMap<>();
+        for (final AthleteActivity activity: activities) {
+            for (final TeamMember teamMember: teamMembers) {
+                if (activity.getAthlete().getId() == teamMember.getId()) {
+                    if (teamMember.getGender().equals(gender)) {
+                        final String name = getNameFromId(activity.getAthlete().getId(), teams);
+                        if (map.containsKey(name)) {
+                            map.put(name, map.get(name) + 1);
+                        } else {
+                            map.put(name, 1);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
 
-        final Stream<Entry<String, Integer>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
+        final Stream<Entry<String, Integer>> aggregateSorted = map.entrySet().stream().sorted(comparingByValue(reverseOrder()));
         return aggregateSorted.collect(toList());
     }
 
