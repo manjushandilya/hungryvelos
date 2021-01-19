@@ -8,7 +8,6 @@ import com.velokofi.hungryvelos.model.RefreshTokenRequest;
 import com.velokofi.hungryvelos.model.RefreshTokenResponse;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
 import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
-import com.velokofi.hungryvelos.persistence.Saver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -62,17 +61,16 @@ public final class ActivityUpdater {
                     System.out.println("Trying to fetch activities with pageNumber: " + pageNumber);
                     final ResponseEntity<String> activitiesResponse = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
                     final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
+                    if (activitiesArray.length > 0) {
+                        System.out.println("Saving " + activitiesArray.length + " activities to db");
+                        Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                    }
+
                     if (activitiesArray.length < 200) {
                         System.out.println("Less than 200 (pageSize) activities found, breaking the loop...");
                         break;
-                    } else {
-                        System.out.println("Saving " + activitiesArray.length + " activities to db");
                     }
-                    Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
                     pageNumber++;
-
-                    System.out.println("Saving " + activitiesArray.length + " activities to file");
-                    Saver.persistActivities(clientId, activitiesResponse.getBody());
                 } catch (final Exception e) {
                     System.out.println("Request failed with message: " + e.getMessage());
                     System.out.println("Refreshing auth token, old value: " + getTokenValue(clientId));
@@ -81,7 +79,7 @@ public final class ActivityUpdater {
 
                     System.out.println("New value: " + getTokenValue(clientId));
                 }
-                System.out.println("zZzZzZz ing for 5 seconds...");
+                //System.out.println("zZzZzZz ing for 5 seconds...");
                 try {
                     Thread.sleep(5000);
                 } catch (final Exception e) {
