@@ -59,7 +59,7 @@ public final class LeaderBoardController {
         final Set<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toSet());
         final Optional<TeamMember> teamMemberLogin = teamMembers.stream().filter(tm -> String.valueOf(tm.getId()).equals(client.getPrincipalName())).findFirst();
 
-        System.out.println("Team member logged in? " + teamMemberLogin.isPresent());
+        System.out.println("Team member logged in? " + teamMemberLogin.isPresent() + ", strava id: " + client.getPrincipalName());
 
         final LeaderBoard leaderBoard = new LeaderBoard();
         final ObjectMapper mapper = new ObjectMapper();
@@ -73,7 +73,7 @@ public final class LeaderBoardController {
 
         leaderBoard.setAthleteProfile(athleteProfile);
 
-        if (teamMemberLogin.isPresent() && Boolean.getBoolean("hungryvelos.fetch.profile.on.login")) {
+        if (teamMemberLogin.isPresent()) {
             final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
             OAuthorizedClient.setPrincipalName(client.getPrincipalName());
             OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));

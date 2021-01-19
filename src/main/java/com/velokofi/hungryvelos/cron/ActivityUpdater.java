@@ -8,6 +8,7 @@ import com.velokofi.hungryvelos.model.RefreshTokenRequest;
 import com.velokofi.hungryvelos.model.RefreshTokenResponse;
 import com.velokofi.hungryvelos.persistence.AthleteActivityRepository;
 import com.velokofi.hungryvelos.persistence.OAuthorizedClientRepository;
+import com.velokofi.hungryvelos.persistence.Saver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -65,17 +66,20 @@ public final class ActivityUpdater {
                         //System.out.println("Less than 200 (pageSize) activities found, breaking the loop...");
                         break;
                     } else {
-                        //System.out.println("Saving " + activitiesArray.length + " activities to db");
+                        System.out.println("Saving " + activitiesArray.length + " activities to db");
                     }
                     Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
                     pageNumber++;
+
+                    System.out.println("Saving " + activitiesArray.length + " activities to file");
+                    Saver.persistActivities(clientId, activitiesResponse.getBody());
                 } catch (final Exception e) {
-                    //System.out.println("Request failed with message: " + e.getMessage());
-                    //System.out.println("Refreshing auth token, old value: " + getTokenValue(clientId));
+                    System.out.println("Request failed with message: " + e.getMessage());
+                    System.out.println("Refreshing auth token, old value: " + getTokenValue(clientId));
 
                     refresh(clientId);
 
-                    //System.out.println("New value: " + getTokenValue(clientId));
+                    System.out.println("New value: " + getTokenValue(clientId));
                 }
                 //System.out.println("zZzZzZz ing for 5 seconds...");
                 try {
