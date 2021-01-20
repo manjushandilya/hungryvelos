@@ -388,20 +388,22 @@
                                             <th>Distance</th>
                                             <th>Elevation</th>
                                             <th>Average Speed</th>
+                                            <th>Rides</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="athleteSummary : ${leaderBoard.athleteSummaries}">
                                                 <td>
-                                                    <img width="30" height="30"
+                                                    <img width="30" height="25"
                                                          th:src="${athleteSummary.gender == 'M' ? 'img/undraw_profile.svg' : 'img/undraw_profile_1.svg'}"/>
-                                                    <img width="30" height="30"
-                                                         th:if="${athleteSummary.captain}" src="img/captain.svg"/>
                                                     <span th:text="${athleteSummary.name}">Name</span>
+                                                    <img width="30" height="25"
+                                                         th:if="${athleteSummary.captain}" src="img/captain.svg"/>
                                                 </td>
                                                 <td><span th:text="${athleteSummary.distance}">Distance</span></td>
                                                 <td><span th:text="${athleteSummary.elevation}">Elevation</span></td>
                                                 <td><span th:text="${athleteSummary.avgSpeed}">Average Speed</span></td>
+                                                <td><span th:text="${athleteSummary.rides}">Rides</span></td>
                                             </tr>
                                         </tbody>
                                     </table>

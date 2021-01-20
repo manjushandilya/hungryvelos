@@ -16,6 +16,8 @@ public class AthleteSummary {
 
     private String gender;
 
+    private long rides;
+
     public long getId() {
         return id;
     }
@@ -70,5 +72,13 @@ public class AthleteSummary {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getRides() {
+        return rides;
+    }
+
+    public void setRides(long rides) {
+        this.rides = rides;
     }
 }
