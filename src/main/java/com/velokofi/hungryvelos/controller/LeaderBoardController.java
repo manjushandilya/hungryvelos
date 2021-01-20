@@ -131,19 +131,19 @@ public final class LeaderBoardController {
             final Map<Long, Double> athleteDistanceMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getDistance() / 1000))
             );
-            System.out.println("athleteDistanceMap: " + athleteDistanceMap);
+            //System.out.println("athleteDistanceMap: " + athleteDistanceMap);
 
             // Calculate athlete elevation
             final Map<Long, Double> athleteElevationMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getTotal_elevation_gain()))
             );
-            System.out.println("athleteElevationMap: " + athleteElevationMap);
+            //System.out.println("athleteElevationMap: " + athleteElevationMap);
 
             // Calculate athlete average speed
             final Map<Long, Double> athleteAvgSpeedMap = activities.stream().collect(
                     groupingBy(a -> a.getAthlete().getId(), averagingDouble(a -> a.getAverage_speed()))
             );
-            System.out.println("athleteAvgSpeedMap: " + athleteAvgSpeedMap);
+            //System.out.println("athleteAvgSpeedMap: " + athleteAvgSpeedMap);
 
             final List<AthleteSummary> athleteSummaries = new ArrayList<>();
             for (final TeamMember tm: teamMembers) {
