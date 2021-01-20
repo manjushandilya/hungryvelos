@@ -32,16 +32,11 @@ import static java.util.stream.Collectors.*;
 @RestController
 public final class LeaderBoardController {
 
-    private enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
-
     private final RestTemplate restTemplate;
-
     @Autowired
     private TeamsRepository teamsRepository;
-
     @Autowired
     private AthleteActivityRepository athleteActivityRepo;
-
     @Autowired
     private OAuthorizedClientRepository authorizedClientRepo;
 
@@ -49,12 +44,19 @@ public final class LeaderBoardController {
         this.restTemplate = restTemplate;
     }
 
+    private static String humanReadableFormat(final Duration duration) {
+        return String.format("%sd %sh %sm", duration.toDays(),
+                duration.toHours() - TimeUnit.DAYS.toHours(duration.toDays()),
+                duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours()),
+                duration.getSeconds() - TimeUnit.MINUTES.toSeconds(duration.toMinutes()));
+    }
+
     @GetMapping("/")
     public ModelAndView leaderboard(@RegisteredOAuth2AuthorizedClient final OAuth2AuthorizedClient client,
                                     @RequestParam(required = false, defaultValue = "false") boolean debug) throws Exception {
 
         final List<Team> teams = teamsRepository.listTeams();
-        final Set<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toSet());
+        final List<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toList());
         final Optional<TeamMember> teamMemberLogin = teamMembers.stream().filter(tm -> String.valueOf(tm.getId()).equals(client.getPrincipalName())).findFirst();
 
         System.out.println("Team member logged in? " + teamMemberLogin.isPresent() + ", strava id: " + client.getPrincipalName());
@@ -74,7 +76,7 @@ public final class LeaderBoardController {
         if (teamMemberLogin.isPresent()) {
             final OAuthorizedClient OAuthorizedClient = new OAuthorizedClient();
             OAuthorizedClient.setPrincipalName(client.getPrincipalName());
-            OAuthorizedClient.setBytes(OAuthorizedClient.toBytes(client));
+            OAuthorizedClient.setBytes(com.velokofi.hungryvelos.model.OAuthorizedClient.toBytes(client));
             authorizedClientRepo.save(OAuthorizedClient);
         }
 
@@ -153,11 +155,11 @@ public final class LeaderBoardController {
             //System.out.println("athleteRideCountMap: " + athleteRideCountMap);
 
             final List<AthleteSummary> athleteSummaries = new ArrayList<>();
-            for (final TeamMember tm: teamMembers) {
+            for (final TeamMember tm : teamMembers) {
                 final AthleteSummary summary = new AthleteSummary();
                 final long id = tm.getId();
                 summary.setId(id);
-                summary.setName(getNameFromId(id, teams));
+                summary.setName(getNameFromId(id, teamMembers));
                 summary.setDistance(round(athleteDistanceMap.containsKey(id) ? athleteDistanceMap.get(id) : 0));
                 summary.setElevation(round(athleteElevationMap.containsKey(id) ? athleteElevationMap.get(id) : 0));
                 summary.setAvgSpeed(round(athleteAvgSpeedMap.containsKey(id) ? athleteAvgSpeedMap.get(id) : 0));
@@ -221,17 +223,17 @@ public final class LeaderBoardController {
             leaderBoard.setTeamAvgRidesMap(teamAvgRidesMap);
         }
 
-        leaderBoard.setMrAlemaari(summingAggregateDouble(activities, teams, "M", MetricType.DISTANCE));
-        leaderBoard.setMsAlemaari(summingAggregateDouble(activities, teams, "F", MetricType.DISTANCE));
+        leaderBoard.setMrAlemaari(summingAggregateDouble(activities, teamMembers, "M", MetricType.DISTANCE));
+        leaderBoard.setMsAlemaari(summingAggregateDouble(activities, teamMembers, "F", MetricType.DISTANCE));
 
-        leaderBoard.setBettappa(summingAggregateDouble(activities, teams, "M", MetricType.ELEVATION));
-        leaderBoard.setBettamma(summingAggregateDouble(activities, teams, "F", MetricType.ELEVATION));
+        leaderBoard.setBettappa(summingAggregateDouble(activities, teamMembers, "M", MetricType.ELEVATION));
+        leaderBoard.setBettamma(summingAggregateDouble(activities, teamMembers, "F", MetricType.ELEVATION));
 
-        leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teams, "M", MetricType.AVG_SPEED));
-        leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teams, "F", MetricType.AVG_SPEED));
+        leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teamMembers, "M", MetricType.AVG_SPEED));
+        leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teamMembers, "F", MetricType.AVG_SPEED));
 
-        leaderBoard.setMrThulimaga(summingAggregateInteger(activities, teams, "M"));
-        leaderBoard.setMsThulimaga(summingAggregateInteger(activities, teams, "F"));
+        leaderBoard.setMrThulimaga(summingAggregateLong(activities, teamMembers, "M"));
+        leaderBoard.setMsThulimaga(summingAggregateLong(activities, teamMembers, "F"));
 
         final ModelAndView mav = new ModelAndView("index");
         mav.addObject("leaderBoard", leaderBoard);
@@ -239,10 +241,14 @@ public final class LeaderBoardController {
         return mav;
     }
 
-    private String getNameFromId(final Long id, final List<Team> teams) {
-        final Set<TeamMember> teamMembers = teams.stream().flatMap(t -> t.getMembers().stream()).collect(toSet());
+    private String getNameFromId(final Long id, final List<TeamMember> teamMembers) {
         final Optional<TeamMember> optional = teamMembers.stream().filter(tm -> tm.getId() == id).findFirst();
         return optional.isPresent() ? optional.get().getName() : null;
+    }
+
+    private String getGenderFromId(final Long id, final List<TeamMember> teamMembers) {
+        final Optional<TeamMember> optional = teamMembers.stream().filter(tm -> tm.getId() == id).findFirst();
+        return optional.isPresent() ? optional.get().getGender() : null;
     }
 
     private long getTeamMemberCount(final String teamName, final List<Team> teams) {
@@ -255,13 +261,13 @@ public final class LeaderBoardController {
     }
 
     private List<Entry<String, Double>> summingAggregateDouble(final List<AthleteActivity> activities,
-                                                               final List<Team> teams,
+                                                               final List<TeamMember> teamMembers,
                                                                final String gender,
                                                                final MetricType metricType) {
         final Map<String, Double> aggregateMap = activities.stream()
-                .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
+                .filter(a -> filterBasedOnGender(a.getAthlete(), teamMembers, gender))
                 .collect(groupingBy(
-                        a -> getNameFromId(a.getAthlete().getId(), teams),
+                        a -> getNameFromId(a.getAthlete().getId(), teamMembers),
                         summingDouble(a -> round(getValue(metricType, a))))
                 );
 
@@ -270,13 +276,13 @@ public final class LeaderBoardController {
     }
 
     private List<Entry<String, Double>> averagingAggregateDouble(final List<AthleteActivity> activities,
-                                                                 final List<Team> teams,
+                                                                 final List<TeamMember> teamMembers,
                                                                  final String gender,
                                                                  final MetricType metricType) {
         final Map<String, Double> aggregateMap = activities.stream()
-                .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
+                .filter(a -> filterBasedOnGender(a.getAthlete(), teamMembers, gender))
                 .collect(groupingBy(
-                        a -> getNameFromId(a.getAthlete().getId(), teams),
+                        a -> getNameFromId(a.getAthlete().getId(), teamMembers),
                         averagingDouble(a -> round(getValue(metricType, a) * 3.6)))
                 );
 
@@ -284,25 +290,15 @@ public final class LeaderBoardController {
         return aggregateSorted.collect(toList());
     }
 
-    private List<Entry<String, Integer>> summingAggregateInteger(final List<AthleteActivity> activities,
-                                                                 final List<Team> teams,
-                                                                 final String gender) {
-        final Set<TeamMember> teamMembers = teams.stream().flatMap(team -> team.getMembers().stream()).collect(toSet());
-        final Map<String, Integer> map = new HashMap<>();
-        for (final TeamMember teamMember: teamMembers) {
-            for (final AthleteActivity activity: activities) {
-                if (teamMember.getId() == activity.getAthlete().getId() && teamMember.getGender().equals(gender)) {
-                    final String name = getNameFromId(activity.getAthlete().getId(), teams);
-                    if (map.containsKey(name)) {
-                        map.put(name, map.get(name) + 1);
-                    } else {
-                        map.put(name, 1);
-                    }
-                }
-            }
-        }
+    private List<Entry<String, Long>> summingAggregateLong(final List<AthleteActivity> activities,
+                                                           final List<TeamMember> teamMembers,
+                                                           final String gender) {
 
-        final Stream<Entry<String, Integer>> aggregateSorted = map.entrySet().stream().sorted(comparingByValue(reverseOrder()));
+        final Map<String, Long> map = activities.stream().filter(a -> getGenderFromId(a.getAthlete().getId(), teamMembers).equals(gender))
+                .collect(groupingBy(a -> a.getAthlete().getId(), counting()))
+                .entrySet().stream().collect(toMap(e -> getNameFromId(e.getKey(), teamMembers), e -> e.getValue()));
+
+        final Stream<Entry<String, Long>> aggregateSorted = map.entrySet().stream().sorted(comparingByValue(reverseOrder()));
         return aggregateSorted.collect(toList());
     }
 
@@ -326,8 +322,7 @@ public final class LeaderBoardController {
         return response.getBody();
     }
 
-    private boolean filterBasedOnGender(final AthleteActivity.Athlete athlete, final List<Team> teams, final String gender) {
-        final Set<TeamMember> teamMembers = teams.stream().flatMap(team -> team.getMembers().stream()).collect(toSet());
+    private boolean filterBasedOnGender(final AthleteActivity.Athlete athlete, final List<TeamMember> teamMembers, final String gender) {
         final Optional<TeamMember> optional = teamMembers.stream().filter(
                 teamMember -> teamMember.getId() == athlete.getId() && gender.equals(teamMember.getGender())).findFirst();
         return optional.isPresent();
@@ -359,11 +354,6 @@ public final class LeaderBoardController {
         return new BigDecimal(val).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
-    private static String humanReadableFormat(final Duration duration) {
-        return String.format("%sd %sh %sm", duration.toDays(),
-                duration.toHours() - TimeUnit.DAYS.toHours(duration.toDays()),
-                duration.toMinutes() - TimeUnit.HOURS.toMinutes(duration.toHours()),
-                duration.getSeconds() - TimeUnit.MINUTES.toSeconds(duration.toMinutes()));
-    }
+    private enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
 
 }

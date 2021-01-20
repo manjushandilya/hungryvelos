@@ -35,8 +35,8 @@ public class LeaderBoard {
     private List<Entry<String, Double>> msAlemaari;
     private List<Entry<String, Double>> minchinaOtappa;
     private List<Entry<String, Double>> minchinaOtamma;
-    private List<Entry<String, Integer>> mrThulimaga;
-    private List<Entry<String, Integer>> msThulimaga;
+    private List<Entry<String, Long>> mrThulimaga;
+    private List<Entry<String, Long>> msThulimaga;
 
     // for tabular data
     private List<AthleteSummary> athleteSummaries;
@@ -211,19 +211,19 @@ public class LeaderBoard {
         this.minchinaOtamma = minchinaOtamma;
     }
 
-    public List<Entry<String, Integer>> getMrThulimaga() {
+    public List<Entry<String, Long>> getMrThulimaga() {
         return mrThulimaga;
     }
 
-    public void setMrThulimaga(List<Entry<String, Integer>> mrThulimaga) {
+    public void setMrThulimaga(List<Entry<String, Long>> mrThulimaga) {
         this.mrThulimaga = mrThulimaga;
     }
 
-    public List<Entry<String, Integer>> getMsThulimaga() {
+    public List<Entry<String, Long>> getMsThulimaga() {
         return msThulimaga;
     }
 
-    public void setMsThulimaga(List<Entry<String, Integer>> msThulimaga) {
+    public void setMsThulimaga(List<Entry<String, Long>> msThulimaga) {
         this.msThulimaga = msThulimaga;
     }
 
