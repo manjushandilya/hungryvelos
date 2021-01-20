@@ -682,8 +682,8 @@
 
     var msAlemaariChartConfig = {
         labels: [
-            /*[# th:each="msAlemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
-                "[(${msAlemaari.key})]",
+            /*[# th:each="alemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
+                "[(${alemaari.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -692,8 +692,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="msAlemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
-                    [(${msAlemaari.value})],
+                /*[# th:each="alemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
+                    [(${alemaari.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -702,8 +702,8 @@
 
     var mrAlemaariChartConfig = {
         labels: [
-            /*[# th:each="mrAlemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
-                "[(${msAlemaari.key})]",
+            /*[# th:each="alemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
+                "[(${alemaari.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -712,8 +712,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="mrAlemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
-                    [(${mrAlemaari.value})],
+                /*[# th:each="alemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
+                    [(${alemaari.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -722,8 +722,8 @@
 
     var bettammaChartConfig = {
         labels: [
-            /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
-                "[(${bettamma.key})]",
+            /*[# th:each="amma, iterStat: ${leaderBoard.bettamma}"]*/
+                "[(${amma.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -732,8 +732,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
-                    [(${bettamma.value})],
+                /*[# th:each="amma, iterStat: ${leaderBoard.bettamma}"]*/
+                    [(${amma.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -742,8 +742,8 @@
 
     var bettappaChartConfig = {
         labels: [
-            /*[# th:each="bettappa, iterStat: ${leaderBoard.bettappa}"]*/
-                "[(${bettappa.key})]",
+            /*[# th:each="appa, iterStat: ${leaderBoard.bettappa}"]*/
+                "[(${appa.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -762,8 +762,8 @@
 
     var minchinaOtammaChartConfig = {
         labels: [
-            /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
-                "[(${minchinaOtamma.key})]",
+            /*[# th:each="motamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
+                "[(${motamma.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -772,8 +772,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
-                    [(${minchinaOtamma.value})],
+                /*[# th:each="motamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
+                    [(${motamma.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -782,8 +782,8 @@
 
     var minchinaOtappaChartConfig = {
         labels: [
-            /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
-                "[(${minchinaOtappa.key})]",
+            /*[# th:each="motappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
+                "[(${motappa.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -792,8 +792,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
-                    [(${minchinaOtappa.value})],
+                /*[# th:each="motappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
+                    [(${motappa.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -802,8 +802,8 @@
 
     var msThulimagaChartConfig = {
         labels: [
-            /*[# th:each="msThuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
-                "[(${msThuliMaga.key})]",
+            /*[# th:each="thuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
+                "[(${thuliMaga.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -812,8 +812,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="msThuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
-                    [(${msThuliMaga.value})],
+                /*[# th:each="thuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
+                    [(${thuliMaga.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -822,8 +822,8 @@
 
     var mrThuliMagaChartConfig = {
         labels: [
-            /*[# th:each="mrThuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
-                "[(${mrThuliMaga.key})]",
+            /*[# th:each="thuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
+                "[(${thuliMaga.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -832,8 +832,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="mrThuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
-                    [(${mrThuliMaga.value})],
+                /*[# th:each="thuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
+                    [(${thuliMaga.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
