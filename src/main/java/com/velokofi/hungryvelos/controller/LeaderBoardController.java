@@ -156,12 +156,12 @@ public final class LeaderBoardController {
                 summary.setGender(tm.getGender());
                 summary.setCaptain(tm.isCaptain());
                 athleteSummaries.add(summary);
-            }*/
+            }
 
             final Comparator<AthleteSummary> sortByDistance = (as1, as2) -> (int) (as1.getDistance() - as2.getDistance());
             Collections.sort(athleteSummaries, sortByDistance);
 
-            leaderBoard.setAthleteSummaries(athleteSummaries);
+            leaderBoard.setAthleteSummaries(athleteSummaries);*/
 
             // Calculate team distance
             final Map<String, Double> teamDistanceMap = teams.stream().collect(
