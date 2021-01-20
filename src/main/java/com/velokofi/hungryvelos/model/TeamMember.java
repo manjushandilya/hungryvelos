@@ -51,4 +51,16 @@ public class TeamMember {
     public void setCaptain(boolean captain) {
         this.captain = captain;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TeamMember{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", gender='").append(gender).append('\'');
+        sb.append(", teamId=").append(teamId);
+        sb.append(", captain=").append(captain);
+        sb.append('}');
+        return sb.toString();
+    }
 }

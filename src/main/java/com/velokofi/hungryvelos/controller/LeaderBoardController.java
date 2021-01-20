@@ -16,27 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.Duration;
 import java.util.*;
-import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Comparator.reverseOrder;
-import static java.util.Map.Entry.comparingByValue;
 import static java.util.stream.Collectors.*;
+import static com.velokofi.hungryvelos.util.NumberCruncher.*;
 
 @RestController
 public final class LeaderBoardController {
 
     private final RestTemplate restTemplate;
+
     @Autowired
     private TeamsRepository teamsRepository;
+
     @Autowired
     private AthleteActivityRepository athleteActivityRepo;
+
     @Autowired
     private OAuthorizedClientRepository authorizedClientRepo;
 
@@ -232,84 +231,18 @@ public final class LeaderBoardController {
         leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teamMembers, "M", MetricType.AVG_SPEED));
         leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teamMembers, "F", MetricType.AVG_SPEED));
 
-        leaderBoard.setMrThulimaga(summingAggregateLong(activities, teamMembers, "M"));
-        leaderBoard.setMsThulimaga(summingAggregateLong(activities, teamMembers, "F"));
+        final List<Map.Entry<String, Long>> mrThulimaga = summingAggregateLong(activities, teamMembers, "M");
+        leaderBoard.setMrThulimaga(mrThulimaga);
+        System.out.println("mrThulimaga: " + mrThulimaga);
+
+        final List<Map.Entry<String, Long>> msThulimaga = summingAggregateLong(activities, teamMembers, "F");
+        leaderBoard.setMsThulimaga(msThulimaga);
+        System.out.println("msThulimaga: " + msThulimaga);
 
         final ModelAndView mav = new ModelAndView("index");
         mav.addObject("leaderBoard", leaderBoard);
         mav.addObject("principalName", client.getPrincipalName());
         return mav;
-    }
-
-    private String getNameFromId(final Long id, final List<TeamMember> teamMembers) {
-        final Optional<TeamMember> optional = teamMembers.stream().filter(tm -> tm.getId() == id).findFirst();
-        return optional.isPresent() ? optional.get().getName() : null;
-    }
-
-    private String getGenderFromId(final Long id, final List<TeamMember> teamMembers) {
-        final Optional<TeamMember> optional = teamMembers.stream().filter(tm -> tm.getId() == id).findFirst();
-        return optional.isPresent() ? optional.get().getGender() : null;
-    }
-
-    private long getTeamMemberCount(final String teamName, final List<Team> teams) {
-        final Optional<Team> optional = teams.stream().filter(t -> t.getName().equals(teamName)).findFirst();
-        if (optional.isPresent()) {
-            final Team team = optional.get(); // exceptional handling for injured team member!
-            return team.getId() == 2 ? team.getMembers().size() - 1 : team.getMembers().size();
-        }
-        return 0;
-    }
-
-    private List<Entry<String, Double>> summingAggregateDouble(final List<AthleteActivity> activities,
-                                                               final List<TeamMember> teamMembers,
-                                                               final String gender,
-                                                               final MetricType metricType) {
-        final Map<String, Double> aggregateMap = activities.stream()
-                .filter(a -> filterBasedOnGender(a.getAthlete(), teamMembers, gender))
-                .collect(groupingBy(
-                        a -> getNameFromId(a.getAthlete().getId(), teamMembers),
-                        summingDouble(a -> round(getValue(metricType, a))))
-                );
-
-        final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
-        return aggregateSorted.collect(toList());
-    }
-
-    private List<Entry<String, Double>> averagingAggregateDouble(final List<AthleteActivity> activities,
-                                                                 final List<TeamMember> teamMembers,
-                                                                 final String gender,
-                                                                 final MetricType metricType) {
-        final Map<String, Double> aggregateMap = activities.stream()
-                .filter(a -> filterBasedOnGender(a.getAthlete(), teamMembers, gender))
-                .collect(groupingBy(
-                        a -> getNameFromId(a.getAthlete().getId(), teamMembers),
-                        averagingDouble(a -> round(getValue(metricType, a) * 3.6)))
-                );
-
-        final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
-        return aggregateSorted.collect(toList());
-    }
-
-    private List<Entry<String, Long>> summingAggregateLong(final List<AthleteActivity> activities,
-                                                           final List<TeamMember> teamMembers,
-                                                           final String gender) {
-
-        final Map<String, Long> map = activities.stream().filter(a -> getGenderFromId(a.getAthlete().getId(), teamMembers).equals(gender))
-                .collect(groupingBy(a -> a.getAthlete().getId(), counting()))
-                .entrySet().stream().collect(toMap(e -> getNameFromId(e.getKey(), teamMembers), e -> e.getValue()));
-
-        final Stream<Entry<String, Long>> aggregateSorted = map.entrySet().stream().sorted(comparingByValue(reverseOrder()));
-        return aggregateSorted.collect(toList());
-    }
-
-    private double getValue(MetricType metricType, AthleteActivity a) {
-        if (metricType == MetricType.DISTANCE) {
-            return round(a.getDistance() / 1000D);
-        } else if (metricType == MetricType.ELEVATION) {
-            return a.getTotal_elevation_gain();
-        } else {
-            return a.getAverage_speed();
-        }
     }
 
     private String getResponse(final String tokenValue, final String url) {
@@ -322,38 +255,6 @@ public final class LeaderBoardController {
         return response.getBody();
     }
 
-    private boolean filterBasedOnGender(final AthleteActivity.Athlete athlete, final List<TeamMember> teamMembers, final String gender) {
-        final Optional<TeamMember> optional = teamMembers.stream().filter(
-                teamMember -> teamMember.getId() == athlete.getId() && gender.equals(teamMember.getGender())).findFirst();
-        return optional.isPresent();
-    }
-
-    private double getAthleteAggregateDouble(final Team team, final Map<Long, Double> map) {
-        final List<TeamMember> members = team.getMembers();
-        double total = 0;
-        for (final TeamMember member : members) {
-            if (map.containsKey(member.getId())) {
-                total += map.get(member.getId());
-            }
-        }
-        return total;
-    }
-
-    private long getAthleteAggregate(final Team team, final Map<Long, Long> map) {
-        final List<TeamMember> members = team.getMembers();
-        long total = 0;
-        for (final TeamMember member : members) {
-            if (map.containsKey(member.getId())) {
-                total += map.get(member.getId());
-            }
-        }
-        return total;
-    }
-
-    private double round(final double val) {
-        return new BigDecimal(val).setScale(2, RoundingMode.HALF_UP).doubleValue();
-    }
-
-    private enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
+    public enum MetricType {DISTANCE, ELEVATION, AVG_SPEED}
 
 }
