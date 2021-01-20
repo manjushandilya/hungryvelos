@@ -393,11 +393,11 @@
                                         <tbody>
                                             <tr th:each="athleteSummary : ${leaderBoard.athleteSummaries}">
                                                 <td>
-                                                    <span th:text="${athleteSummary.name}">Name</span>
                                                     <img width="30" height="30"
                                                          th:src="${athleteSummary.gender == 'M' ? 'img/undraw_profile.svg' : 'img/undraw_profile_1.svg'}"/>
                                                     <img width="30" height="30"
-                                                         th:src="${athleteSummary.captain == true ? 'img/captain.svg' : ''}"/>
+                                                         th:if="${athleteSummary.captain}" th:src="img/captain.svg"/>
+                                                    <span th:text="${athleteSummary.name}">Name</span>
                                                 </td>
                                                 <td><span th:text="${athleteSummary.distance}">Distance</span></td>
                                                 <td><span th:text="${athleteSummary.elevation}">Elevation</span></td>
