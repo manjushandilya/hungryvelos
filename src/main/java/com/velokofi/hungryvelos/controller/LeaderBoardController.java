@@ -231,13 +231,8 @@ public final class LeaderBoardController {
         leaderBoard.setMinchinaOtappa(averagingAggregateDouble(activities, teamMembers, "M", MetricType.AVG_SPEED));
         leaderBoard.setMinchinaOtamma(averagingAggregateDouble(activities, teamMembers, "F", MetricType.AVG_SPEED));
 
-        final List<Map.Entry<String, Long>> mrThulimaga = summingAggregateLong(activities, teamMembers, "M");
-        leaderBoard.setMrThulimaga(mrThulimaga);
-        System.out.println("mrThulimaga: " + mrThulimaga);
-
-        final List<Map.Entry<String, Long>> msThulimaga = summingAggregateLong(activities, teamMembers, "F");
-        leaderBoard.setMsThulimaga(msThulimaga);
-        System.out.println("msThulimaga: " + msThulimaga);
+        leaderBoard.setMrThulimaga(summingAggregateLong(activities, teamMembers, "M"));
+        leaderBoard.setMsThulimaga(summingAggregateLong(activities, teamMembers, "F"));
 
         final ModelAndView mav = new ModelAndView("index");
         mav.addObject("leaderBoard", leaderBoard);

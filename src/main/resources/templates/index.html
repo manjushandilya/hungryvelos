@@ -294,7 +294,7 @@
                     </div>
                 </div>
 
-                <!-- Content Row - Bettappa, Bettamma and Alemaari -->
+                <!-- Content Row - Ms Alemaari and Mr Alemaari -->
                 <div class="row">
 
                     <!-- Area Chart -->
@@ -303,12 +303,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bettamma and Ms. Alemaari</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Ms. Alemaari</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="individualFemaleRankingsChart"></canvas>
+                                    <canvas id="msAlemaariChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -320,19 +320,19 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Bettappa and Mr. Alemaari</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Mr. Alemaari</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="individualMaleRankingsChart"></canvas>
+                                    <canvas id="mrAlemaariChart"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Content Row - Minchina Ota and Thulimaga -->
+                <!-- Content Row - Bettappa, Bettamma -->
                 <div class="row">
 
                     <!-- Area Chart -->
@@ -341,12 +341,12 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota and Thulimaga - Female</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Bettamma</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtammaAndMsThulimagaChart"></canvas>
+                                    <canvas id="bettammaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -358,12 +358,88 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota and Thulimaga - Male</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Bettappa</h6>
                             </div>
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="minchinaOtappaAndMrThulimagaChart"></canvas>
+                                    <canvas id="bettappaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Row - Minchina Otamma and Michina Otappa -->
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota - Female</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="minchinaOtammaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Minchina Ota - Male</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="minchinaOtappaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Row - Ms Thulimaga and Mr Thulimaga -->
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Thulimaga - Female</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="msThuliMagaChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Thulimaga - Male</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="mrThuliMagaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -604,7 +680,67 @@
         }]
     };
 
-    var individualMaleRankingsChartConfig = {
+    var msAlemaariChartConfig = {
+        labels: [
+            /*[# th:each="msAlemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
+                "[(${msAlemaari.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
+            label: 'Distance',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
+            fill: false,
+            data: [
+                /*[# th:each="msAlemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
+                    [(${msAlemaari.value})],
+                /*[/]*/
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var mrAlemaariChartConfig = {
+        labels: [
+            /*[# th:each="mrAlemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
+                "[(${msAlemaari.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
+            label: 'Distance',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
+            fill: false,
+            data: [
+                /*[# th:each="mrAlemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
+                    [(${mrAlemaari.value})],
+                /*[/]*/
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var bettammaChartConfig = {
+        labels: [
+            /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
+                "[(${bettamma.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
+            label: 'Elevation Gain',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
+            fill: false,
+            data: [
+                /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
+                    [(${bettamma.value})],
+                /*[/]*/
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var bettappaChartConfig = {
         labels: [
             /*[# th:each="bettappa, iterStat: ${leaderBoard.bettappa}"]*/
                 "[(${bettappa.key})]",
@@ -612,116 +748,92 @@
         ],
         datasets: [{
             label: 'Elevation Gain',
-            borderColor: 'rgb(255, 132, 99)',
-            backgroundColor: 'rgb(255, 132, 99)',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
                 /*[# th:each="bettappa, iterStat: ${leaderBoard.bettappa}"]*/
                     [(${bettappa.value})],
                 /*[/]*/
             ],
-            yAxisID: 'y-axis-1',
-        }, {
-            label: 'Distance',
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var minchinaOtammaChartConfig = {
+        labels: [
+            /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
+                "[(${minchinaOtamma.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
+            label: 'Average Speed',
             borderColor: 'rgb(54, 235, 162)',
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="alemaari, iterStat: ${leaderBoard.mrAlemaari}"]*/
-                    [(${alemaari.value})],
-                /*[/]*/
-            ],
-            yAxisID: 'y-axis-2'
-        }]
-    };
-
-    var individualFemaleRankingsChartConfig = {
-        labels: [
-            /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
-                "[(${bettamma.key})]"[(${iterStat.last ? '' : ','})]
-            /*[/]*/
-        ],
-        datasets: [{
-            label: 'Elevation Gain',
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgb(255, 99, 132)',
-            fill: false,
-            data: [
-                /*[# th:each="bettamma, iterStat: ${leaderBoard.bettamma}"]*/
-                    [(${bettamma.value})][(${iterStat.last ? '' : ','})]
-                /*[/]*/
-            ],
-            yAxisID: 'y-axis-1',
-        }, {
-            label: 'Distance',
-            borderColor: 'rgb(54, 162, 235)',
-            backgroundColor: 'rgb(54, 162, 235)',
-            fill: false,
-            data: [
-                /*[# th:each="alemaari, iterStat: ${leaderBoard.msAlemaari}"]*/
-                    [(${alemaari.value})][(${iterStat.last ? '' : ','})]
-                /*[/]*/
-            ],
-            yAxisID: 'y-axis-2'
-        }]
-    };
-
-    var minchinaOtammaAndMsThulimagaChartConfig = {
-        labels: [
-            /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
-                "[(${minchinaOtamma.key})]"[(${iterStat.last ? '' : ','})]
-            /*[/]*/
-        ],
-        datasets: [{
-            label: 'Average Speed',
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgb(255, 99, 132)',
-            fill: false,
-            data: [
                 /*[# th:each="minchinaOtamma, iterStat: ${leaderBoard.minchinaOtamma}"]*/
-                    [(${minchinaOtamma.value})][(${iterStat.last ? '' : ','})]
-                /*[/]*/
-            ],
-            yAxisID: 'y-axis-1',
-        }, {
-            label: 'Rides',
-            borderColor: 'rgb(54, 162, 235)',
-            backgroundColor: 'rgb(54, 162, 235)',
-            fill: false,
-            data: [
-                /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
-                    [(${msThulimaga.value})][(${iterStat.last ? '' : ','})]
+                    [(${minchinaOtamma.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
         }]
     };
 
-    var minchinaOtappaAndMrThulimagaChartConfig = {
+    var minchinaOtappaChartConfig = {
         labels: [
             /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
-                "[(${minchinaOtappa.key})]"[(${iterStat.last ? '' : ','})]
+                "[(${minchinaOtappa.key})]",
             /*[/]*/
         ],
         datasets: [{
             label: 'Average Speed',
-            borderColor: 'rgb(255, 132, 99)',
-            backgroundColor: 'rgb(255, 132, 99)',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
                 /*[# th:each="minchinaOtappa, iterStat: ${leaderBoard.minchinaOtappa}"]*/
-                    [(${minchinaOtappa.value})][(${iterStat.last ? '' : ','})]
+                    [(${minchinaOtappa.value})],
                 /*[/]*/
             ],
-            yAxisID: 'y-axis-1',
-        }, {
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var mrThulimagaChartConfig = {
+        labels: [
+            /*[# th:each="mrThulimaga, iterStat: ${leaderBoard.mrThulimaga}"]*/
+                "[(${mrThulimaga.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
             label: 'Rides',
-            borderColor: 'rgb(54, 162, 235)',
-            backgroundColor: 'rgb(54, 162, 235)',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
                 /*[# th:each="mrThulimaga, iterStat: ${leaderBoard.mrThulimaga}"]*/
-                    [(${mrThulimaga.value})][(${iterStat.last ? '' : ','})]
+                    [(${mrThulimaga.value})],
+                /*[/]*/
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+
+    var msThulimagaChartConfig = {
+        labels: [
+            /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
+                "[(${msThulimaga.key})]",
+            /*[/]*/
+        ],
+        datasets: [{
+            label: 'Rides',
+            borderColor: 'rgb(54, 235, 162)',
+            backgroundColor: 'rgb(54, 235, 162)',
+            fill: false,
+            data: [
+                /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
+                    [(${msThulimaga.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
@@ -789,9 +901,9 @@
             }
         });
 
-        var ctx7 = document.getElementById('individualFemaleRankingsChart').getContext('2d');
+        var ctx7 = document.getElementById('msAlemaariChart').getContext('2d');
         window.myLine = Chart.Line(ctx7, {
-            data: individualFemaleRankingsChartConfig,
+            data: msAlemaariChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -803,24 +915,14 @@
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
                     }],
                 }
             }
         });
 
-        var ctx8 = document.getElementById('individualMaleRankingsChart').getContext('2d');
+        var ctx8 = document.getElementById('mrAlemaariChart').getContext('2d');
         window.myLine = Chart.Line(ctx8, {
-            data: individualMaleRankingsChartConfig,
+            data: mrAlemaariChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -832,24 +934,14 @@
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
                     }],
                 }
             }
         });
 
-        var ctx9 = document.getElementById('minchinaOtammaAndMsThulimagaChart').getContext('2d');
+        var ctx9 = document.getElementById('bettammaChart').getContext('2d');
         window.myLine = Chart.Line(ctx9, {
-            data: minchinaOtammaAndMsThulimagaChartConfig,
+            data: bettammaChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -861,24 +953,14 @@
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
-                    }, {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
                     }],
                 }
             }
         });
 
-        var ctx10 = document.getElementById('minchinaOtappaAndMrThulimagaChart').getContext('2d');
+        var ctx10 = document.getElementById('bettappaChart').getContext('2d');
         window.myLine = Chart.Line(ctx10, {
-            data: minchinaOtappaAndMrThulimagaChartConfig,
+            data: bettappaChartConfig,
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
@@ -890,16 +972,82 @@
                         display: true,
                         position: 'left',
                         id: 'y-axis-1',
-                    }, {
+                    }],
+                }
+            }
+        });
+
+        var ctx11 = document.getElementById('minchinaOtammaChart').getContext('2d');
+        window.myLine = Chart.Line(ctx11, {
+            data: minchinaOtammaChartConfig,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                hoverMode: 'index',
+                stacked: false,
+                scales: {
+                    yAxes: [{
                         type: 'linear',
                         display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
+                        position: 'left',
+                        id: 'y-axis-1',
+                    }],
+                }
+            }
+        });
 
-                        // grid line settings
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
+        var ctx12 = document.getElementById('minchinaOtappaChart').getContext('2d');
+        window.myLine = Chart.Line(ctx10, {
+            data: minchinaOtappaChartConfig,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                hoverMode: 'index',
+                stacked: false,
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                    }],
+                }
+            }
+        });
+
+        var ctx13 = document.getElementById('msThuliMagaChart').getContext('2d');
+        window.myLine = Chart.Line(ctx13, {
+            data: msThuliMagaChartConfig,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                hoverMode: 'index',
+                stacked: false,
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
+                    }],
+                }
+            }
+        });
+
+        var ctx14 = document.getElementById('mrThuliMagaChart').getContext('2d');
+        window.myLine = Chart.Line(ctx14, {
+            data: mrThuliMagaChartConfig,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                hoverMode: 'index',
+                stacked: false,
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-axis-1',
                     }],
                 }
             }
