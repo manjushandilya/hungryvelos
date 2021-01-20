@@ -151,15 +151,15 @@ public final class LeaderBoardController {
                 final long id = tm.getId();
                 summary.setId(id);
                 summary.setName(getNameFromId(id, teams));
-                summary.setDistance(athleteDistanceMap.containsKey(id) ? athleteDistanceMap.get(id) : 0);
-                summary.setElevation(athleteElevationMap.containsKey(id) ? athleteElevationMap.get(id) : 0);
-                summary.setAvgSpeed(athleteAvgSpeedMap.containsKey(id) ? athleteAvgSpeedMap.get(id) : 0);
+                summary.setDistance(round(athleteDistanceMap.containsKey(id) ? athleteDistanceMap.get(id) : 0));
+                summary.setElevation(round(athleteElevationMap.containsKey(id) ? athleteElevationMap.get(id) : 0));
+                summary.setAvgSpeed(round(athleteAvgSpeedMap.containsKey(id) ? athleteAvgSpeedMap.get(id) : 0));
                 summary.setGender(tm.getGender());
                 summary.setCaptain(tm.isCaptain());
                 athleteSummaries.add(summary);
             }
 
-            final Comparator<AthleteSummary> sortByDistance = (as1, as2) -> (int) (as1.getDistance() - as2.getDistance());
+            final Comparator<AthleteSummary> sortByDistance = (as1, as2) -> (int) (as2.getDistance() - as1.getDistance());
             Collections.sort(athleteSummaries, sortByDistance);
 
             leaderBoard.setAthleteSummaries(athleteSummaries);
