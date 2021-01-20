@@ -388,18 +388,22 @@
                                             <th>Distance</th>
                                             <th>Elevation</th>
                                             <th>Average Speed</th>
-                                            <th>Gender</th>
-                                            <th>Captain?</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <tr th:each="athleteSummary : ${leaderBoard.athleteSummaries}">
-                                                <td><span th:text="${athleteSummary.name}">Name</span></td>
+                                                <td>
+                                                    <span th:text="${athleteSummary.name}">Name</span>
+                                                    <img th:src="${athleteSummary.gender == 'M' ? 'img/undraw_profile.svg' : 'img/undraw_profile_1.svg'"/>
+                                                    <img th:src="${athleteSummary.captain == true ? 'img/captain.svg' : 'img/undraw_rocket.svg'"/>
+                                                </td>
                                                 <td><span th:text="${athleteSummary.distance}">Distance</span></td>
                                                 <td><span th:text="${athleteSummary.elevation}">Elevation</span></td>
                                                 <td><span th:text="${athleteSummary.avgSpeed}">Average Speed</span></td>
-                                                <td><span th:text="${athleteSummary.gender}">Gender</span></td>
+                                                <td><span th:text="${athleteSummary.gender == 'M' ? }">Gender</span></td>
                                                 <td><span th:text="${athleteSummary.captain}">Captain?</span></td>
+
+                                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                                             </tr>
                                         </tbody>
                                     </table>
