@@ -394,8 +394,8 @@
                                             <tr th:each="athleteSummary : ${leaderBoard.athleteSummaries}">
                                                 <td>
                                                     <span th:text="${athleteSummary.name}">Name</span>
-                                                    <img th:src="${athleteSummary.gender == 'M' ? 'img/undraw_profile.svg' : 'img/undraw_profile_1.svg'"/>
-                                                    <img th:src="${athleteSummary.captain == true ? 'img/captain.svg' : 'img/undraw_rocket.svg'"/>
+                                                    <img th:src="${athleteSummary.gender == 'M' ? 'img/undraw_profile.svg' : 'img/undraw_profile_1.svg'}"/>
+                                                    <img th:src="${athleteSummary.captain == true ? 'img/captain.svg' : 'img/undraw_rocket.svg'}"/>
                                                 </td>
                                                 <td><span th:text="${athleteSummary.distance}">Distance</span></td>
                                                 <td><span th:text="${athleteSummary.elevation}">Elevation</span></td>
