@@ -800,10 +800,10 @@
         }]
     };
 
-    var mrThulimagaChartConfig = {
+    var msThulimagaChartConfig = {
         labels: [
-            /*[# th:each="mrThulimaga, iterStat: ${leaderBoard.mrThulimaga}"]*/
-                "[(${mrThulimaga.key})]",
+            /*[# th:each="msThuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
+                "[(${msThuliMaga.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -812,18 +812,18 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="mrThulimaga, iterStat: ${leaderBoard.mrThulimaga}"]*/
-                    [(${mrThulimaga.value})],
+                /*[# th:each="msThuliMaga, iterStat: ${leaderBoard.msThuliMaga}"]*/
+                    [(${msThuliMaga.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
         }]
     };
 
-    var msThulimagaChartConfig = {
+    var mrThuliMagaChartConfig = {
         labels: [
-            /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
-                "[(${msThulimaga.key})]",
+            /*[# th:each="mrThuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
+                "[(${mrThuliMaga.key})]",
             /*[/]*/
         ],
         datasets: [{
@@ -832,8 +832,8 @@
             backgroundColor: 'rgb(54, 235, 162)',
             fill: false,
             data: [
-                /*[# th:each="msThulimaga, iterStat: ${leaderBoard.msThulimaga}"]*/
-                    [(${msThulimaga.value})],
+                /*[# th:each="mrThuliMaga, iterStat: ${leaderBoard.mrThuliMaga}"]*/
+                    [(${mrThuliMaga.value})],
                 /*[/]*/
             ],
             yAxisID: 'y-axis-2'
