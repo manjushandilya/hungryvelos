@@ -289,18 +289,15 @@ public final class LeaderBoardController {
                                                                  final String gender) {
         final Set<TeamMember> teamMembers = teams.stream().flatMap(team -> team.getMembers().stream()).collect(toSet());
         final Map<String, Integer> map = new HashMap<>();
-        for (final AthleteActivity activity: activities) {
-            for (final TeamMember teamMember: teamMembers) {
-                if (activity.getAthlete().getId() == teamMember.getId()) {
-                    if (teamMember.getGender().equals(gender)) {
-                        final String name = getNameFromId(activity.getAthlete().getId(), teams);
-                        if (map.containsKey(name)) {
-                            map.put(name, map.get(name) + 1);
-                        } else {
-                            map.put(name, 1);
-                        }
+        for (final TeamMember teamMember: teamMembers) {
+            for (final AthleteActivity activity: activities) {
+                if (teamMember.getId() == activity.getAthlete().getId() && teamMember.getGender().equals(gender)) {
+                    final String name = getNameFromId(activity.getAthlete().getId(), teams);
+                    if (map.containsKey(name)) {
+                        map.put(name, map.get(name) + 1);
+                    } else {
+                        map.put(name, 1);
                     }
-                    break;
                 }
             }
         }
