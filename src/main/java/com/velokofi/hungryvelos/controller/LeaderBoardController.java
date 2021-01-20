@@ -145,14 +145,15 @@ public final class LeaderBoardController {
             );
             System.out.println("athleteAvgSpeedMap: " + athleteAvgSpeedMap);
 
-            /*final List<AthleteSummary> athleteSummaries = new ArrayList<>();
+            final List<AthleteSummary> athleteSummaries = new ArrayList<>();
             for (final TeamMember tm: teamMembers) {
                 final AthleteSummary summary = new AthleteSummary();
-                summary.setId(tm.getId());
-                summary.setName(getNameFromId(tm.getId(), teams));
-                summary.setDistance(athleteDistanceMap.get(tm.getId()));
-                summary.setElevation(athleteElevationMap.get(tm.getId()));
-                summary.setAvgSpeed(athleteAvgSpeedMap.get(tm.getId()));
+                final long id = tm.getId();
+                summary.setId(id);
+                summary.setName(getNameFromId(id, teams));
+                summary.setDistance(athleteDistanceMap.containsKey(id) ? athleteDistanceMap.get(id) : 0);
+                summary.setElevation(athleteElevationMap.containsKey(id) ? athleteElevationMap.get(id) : 0);
+                summary.setAvgSpeed(athleteAvgSpeedMap.containsKey(id) ? athleteAvgSpeedMap.get(id) : 0);
                 summary.setGender(tm.getGender());
                 summary.setCaptain(tm.isCaptain());
                 athleteSummaries.add(summary);
@@ -161,7 +162,7 @@ public final class LeaderBoardController {
             final Comparator<AthleteSummary> sortByDistance = (as1, as2) -> (int) (as1.getDistance() - as2.getDistance());
             Collections.sort(athleteSummaries, sortByDistance);
 
-            leaderBoard.setAthleteSummaries(athleteSummaries);*/
+            leaderBoard.setAthleteSummaries(athleteSummaries);
 
             // Calculate team distance
             final Map<String, Double> teamDistanceMap = teams.stream().collect(
