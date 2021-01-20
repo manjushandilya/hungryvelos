@@ -62,9 +62,9 @@ public class DocumentController {
             case "cleanup":
                 final List<Team> teams = teamsRepository.listTeams();
                 final List<Long> configuredClientIds = teams.stream().flatMap(t -> t.getMembers().stream()).map(tm -> tm.getId()).collect(toList());
-                System.out.println("configuredClientIds: " + configuredClientIds);
+                //System.out.println("configuredClientIds: " + configuredClientIds);
                 final List<Long> persistedClientIds = authorizedClientRepo.findAll().stream().map(ac -> Long.parseLong(ac.getPrincipalName())).collect(toList());
-                System.out.println("persistedClientIds: " + persistedClientIds);
+                //System.out.println("persistedClientIds: " + persistedClientIds);
                 persistedClientIds.stream().filter(c->!configuredClientIds.contains(c)).forEach(
                         id->authorizedClientRepo.deleteById(String.valueOf(id))
                 );

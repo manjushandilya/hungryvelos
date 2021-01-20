@@ -38,6 +38,9 @@ public class LeaderBoard {
     private List<Entry<String, Integer>> mrThulimaga;
     private List<Entry<String, Integer>> msThulimaga;
 
+    // for tabular data
+    private List<AthleteSummary> athleteSummaries;
+
     private AthleteProfile athleteProfile;
 
     public Double getTotalDistance() {
@@ -232,4 +235,11 @@ public class LeaderBoard {
         this.athleteProfile = athleteProfile;
     }
 
+    public List<AthleteSummary> getAthleteSummaries() {
+        return athleteSummaries;
+    }
+
+    public void setAthleteSummaries(List<AthleteSummary> athleteSummaries) {
+        this.athleteSummaries = athleteSummaries;
+    }
 }

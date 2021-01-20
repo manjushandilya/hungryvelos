@@ -133,6 +133,36 @@ public final class LeaderBoardController {
             );
             //System.out.println("athleteDistanceMap: " + athleteDistanceMap);
 
+            // Calculate athlete elevation
+            final Map<Long, Double> athleteElevationMap = activities.stream().collect(
+                    groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getTotal_elevation_gain()))
+            );
+            //System.out.println("athleteElevationMap: " + athleteElevationMap);
+
+            // Calculate athlete average speed
+            final Map<Long, Double> athleteAvgSpeedMap = activities.stream().collect(
+                    groupingBy(a -> a.getAthlete().getId(), averagingDouble(a -> a.getAverage_speed()))
+            );
+            //System.out.println("athleteAvgSpeedMap: " + athleteAvgSpeedMap);
+
+            final List<AthleteSummary> athleteSummaries = new ArrayList<>();
+            for (final TeamMember tm: teamMembers) {
+                final AthleteSummary summary = new AthleteSummary();
+                summary.setId(tm.getId());
+                summary.setName(getNameFromId(tm.getId(), teams));
+                summary.setDistance(athleteDistanceMap.get(tm.getId()));
+                summary.setElevation(athleteElevationMap.get(tm.getId()));
+                summary.setAvgSpeed(athleteAvgSpeedMap.get(tm.getId()));
+                summary.setGender(tm.getGender());
+                summary.setCaptain(tm.isCaptain());
+                athleteSummaries.add(summary);
+            }
+
+            final Comparator<AthleteSummary> sortByDistance = (as1, as2) -> (int) (as1.getDistance() - as2.getDistance());
+            Collections.sort(athleteSummaries, sortByDistance);
+
+            leaderBoard.setAthleteSummaries(athleteSummaries);
+
             // Calculate team distance
             final Map<String, Double> teamDistanceMap = teams.stream().collect(
                     groupingBy(t -> t.getName(), summingDouble(t -> getAthleteAggregate(t, athleteDistanceMap)))
@@ -148,12 +178,6 @@ public final class LeaderBoardController {
             );
             //System.out.println("teamAvgDistanceMap: " + teamAvgDistanceMap);
             leaderBoard.setTeamAvgDistanceMap(teamAvgDistanceMap);
-
-            // Calculate athlete elevation
-            final Map<Long, Double> athleteElevationMap = activities.stream().collect(
-                    groupingBy(a -> a.getAthlete().getId(), summingDouble(a -> a.getTotal_elevation_gain()))
-            );
-            //System.out.println("athleteElevationMap: " + athleteElevationMap);
 
             // Calculate team elevation
             final Map<String, Double> teamElevationMap = teams.stream().collect(
@@ -186,7 +210,7 @@ public final class LeaderBoardController {
             // Calculate team average ride count
             final Map<String, Double> teamAvgRidesMap = teamRideCountMap.entrySet().stream().collect(
                     toMap(
-                            e -> e.getKey(), e -> e.getValue() / getTeamMemberCount(e.getKey(), teams)
+                            e -> e.getKey(), e -> round(e.getValue() / getTeamMemberCount(e.getKey(), teams))
                     )
             );
             //System.out.println("teamAvgRidesMap: " + teamAvgRidesMap);
@@ -249,7 +273,7 @@ public final class LeaderBoardController {
                 .filter(a -> filterBasedOnGender(a.getAthlete(), teams, gender))
                 .collect(groupingBy(
                         a -> getNameFromId(a.getAthlete().getId(), teams),
-                        averagingDouble(a -> getValue(metricType, a) * 3.6))
+                        averagingDouble(a -> round(getValue(metricType, a) * 3.6)))
                 );
 
         final Stream<Entry<String, Double>> aggregateSorted = aggregateMap.entrySet().stream().sorted(comparingByValue(reverseOrder()));
