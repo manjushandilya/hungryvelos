@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -55,7 +54,13 @@ public class DocumentController {
     @GetMapping("/documents")
     public String operation(@RequestParam(name = "action") String action) throws Exception {
         switch (action) {
-            case "clear":
+            case "clearActivities":
+                athleteActivityRepo.deleteAll();
+                break;
+            case "clearClients":
+                authorizedClientRepo.deleteAll();
+                break;
+            case "clearAll":
                 athleteActivityRepo.deleteAll();
                 authorizedClientRepo.deleteAll();
                 break;
