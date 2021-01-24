@@ -107,6 +107,9 @@ public final class LeaderBoardController {
         }
 
         final List<AthleteActivity> activities = athleteActivityRepo.findAll();
+        System.out.println("Fetched " + activities.size() + " activities from db...");
+        System.out.println("Activities: " + activities);
+
         { // event totals
             final Double totalDistance = round(activities.stream().collect(summingDouble(a -> a.getDistance())) / 1000);
 

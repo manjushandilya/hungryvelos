@@ -189,7 +189,7 @@ public class AthleteActivity implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AthleteActivity{");
-        sb.append("athlete=").append(athlete);
+        sb.append("athlete=").append(athlete == null ? "null" : athlete.toString());
         sb.append(", name='").append(name).append('\'');
         sb.append(", distance=").append(distance);
         sb.append(", moving_time=").append(moving_time);
