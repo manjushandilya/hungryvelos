@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
 import static com.velokofi.hungryvelos.util.NumberCruncher.*;
+import static java.util.stream.Collectors.*;
 
 @RestController
 public final class LeaderBoardController {
@@ -98,7 +98,9 @@ public final class LeaderBoardController {
                 }
 
                 final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse, AthleteActivity[].class);
-                Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                Stream.of(activitiesArray)
+                        .filter(a -> ((Long) a.getAthlete().getId() != null) && a.getType().equalsIgnoreCase("ride"))
+                        .forEach(activity -> athleteActivityRepo.save(activity));
 
                 if (activitiesArray.length < 200) {
                     break;
@@ -106,9 +108,11 @@ public final class LeaderBoardController {
             }
         }
 
-        final List<AthleteActivity> activities = athleteActivityRepo.findAll();
+        final List<AthleteActivity> activities = athleteActivityRepo.findAll().stream().filter(
+                a -> ((Long) a.getAthlete().getId())!= null
+        ).collect(toList());
         System.out.println("Fetched " + activities.size() + " activities from db...");
-        System.out.println("Activities: " + activities);
+        //System.out.println("Activities: " + activities);
 
         { // event totals
             final Double totalDistance = round(activities.stream().collect(summingDouble(a -> a.getDistance())) / 1000);

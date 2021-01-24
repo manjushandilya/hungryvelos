@@ -64,7 +64,9 @@ public final class ActivityUpdater {
                     final AthleteActivity[] activitiesArray = mapper.readValue(activitiesResponse.getBody(), AthleteActivity[].class);
                     if (activitiesArray.length > 0) {
                         //System.out.println("Saving " + activitiesArray.length + " activities to db");
-                        Stream.of(activitiesArray).forEach(activity -> athleteActivityRepo.save(activity));
+                        Stream.of(activitiesArray)
+                                .filter(a->a.getType().equalsIgnoreCase("ride"))
+                                .forEach(activity -> athleteActivityRepo.save(activity));
 
                         //System.out.println("Saving " + activitiesArray.length + " activities to file");
                         Saver.persistActivities(clientId,activitiesResponse.getBody());
